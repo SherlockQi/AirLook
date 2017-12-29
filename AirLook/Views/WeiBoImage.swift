@@ -10,7 +10,7 @@ import UIKit
 
 class WeiBoImage: NSObject {
     
-    class func image(text:NSString) -> UIImage {
+    class func image(model:HKWeiBoModel) -> UIImage {
         let sourceImage = #imageLiteral(resourceName: "whiteImage")
         let imageSize = sourceImage.size
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
@@ -28,6 +28,7 @@ class WeiBoImage: NSObject {
         let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font]
         context?.setFillColor(UIColor.red.cgColor)
         
+        let text = model.text ?? ""
         let rect:CGRect = text.boundingRect(with: CGSize(width: 660, height: 1000), options: option, attributes: attributes, context: nil)
         
         text.draw(with: rect, options: option, attributes: attributes, context: nil)

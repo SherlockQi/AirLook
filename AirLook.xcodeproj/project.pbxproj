@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121235B51FF4CC3100B9C853 /* HKNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121235B41FF4CC3100B9C853 /* HKNetwork.swift */; };
+		1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
 		125ED8BF1FF32F4F0019043E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8BE1FF32F4F0019043E /* art.scnassets */; };
 		125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8C01FF32F4F0019043E /* ViewController.swift */; };
@@ -28,9 +30,13 @@
 		128ADDA81FF396360093F5C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128ADDA71FF3962E0093F5C9 /* QuartzCore.framework */; };
 		128ADDAD1FF397630093F5C9 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 128ADDAA1FF397630093F5C9 /* libWeiboSDK.a */; };
 		128ADDAE1FF397630093F5C9 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 128ADDAB1FF397630093F5C9 /* WeiboSDK.bundle */; };
+		12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */; };
+		B112E040C29506445B461FDB /* Pods_AirLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A184FAC753FA596D7D119B0 /* Pods_AirLook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		121235B41FF4CC3100B9C853 /* HKNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKNetwork.swift; sourceTree = "<group>"; };
+		1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoNode.swift; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		125ED8BC1FF32F4F0019043E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		125ED8BE1FF32F4F0019043E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -59,6 +65,10 @@
 		128ADDAA1FF397630093F5C9 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		128ADDAB1FF397630093F5C9 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		128ADDAC1FF397630093F5C9 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoModel.swift; sourceTree = "<group>"; };
+		3E1D1288C56DB8939C599AAF /* Pods-AirLook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirLook/Pods-AirLook.debug.xcconfig"; sourceTree = "<group>"; };
+		8A184FAC753FA596D7D119B0 /* Pods_AirLook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirLook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC325AE4D971BA60FCA21C28 /* Pods-AirLook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirLook.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirLook/Pods-AirLook.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,18 +89,40 @@
 				128ADD841FF38EE50093F5C9 /* ImageIO.framework in Frameworks */,
 				128ADD971FF38F750093F5C9 /* libsqlite3.tbd in Frameworks */,
 				128ADD951FF38F680093F5C9 /* libz.tbd in Frameworks */,
+				B112E040C29506445B461FDB /* Pods_AirLook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		099873BE08BD4108A5B2B70A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E1D1288C56DB8939C599AAF /* Pods-AirLook.debug.xcconfig */,
+				EC325AE4D971BA60FCA21C28 /* Pods-AirLook.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		121235B61FF4CC7A00B9C853 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				125ED8C21FF32F4F0019043E /* Main.storyboard */,
+				125ED8C71FF32F4F0019043E /* LaunchScreen.storyboard */,
+				125ED8C51FF32F4F0019043E /* Assets.xcassets */,
+				125ED8BE1FF32F4F0019043E /* art.scnassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		125ED8B01FF32F4F0019043E = {
 			isa = PBXGroup;
 			children = (
 				125ED8BB1FF32F4F0019043E /* AirLook */,
 				125ED8BA1FF32F4F0019043E /* Products */,
 				128ADD821FF38EDE0093F5C9 /* Frameworks */,
+				099873BE08BD4108A5B2B70A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,15 +137,13 @@
 		125ED8BB1FF32F4F0019043E /* AirLook */ = {
 			isa = PBXGroup;
 			children = (
-				128ADD771FF389260093F5C9 /* weibo */,
 				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
 				128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */,
-				125ED8BE1FF32F4F0019043E /* art.scnassets */,
 				125ED8C01FF32F4F0019043E /* ViewController.swift */,
-				128ADD571FF373BA0093F5C9 /* WeiBoImage.swift */,
-				125ED8C21FF32F4F0019043E /* Main.storyboard */,
-				125ED8C51FF32F4F0019043E /* Assets.xcassets */,
-				125ED8C71FF32F4F0019043E /* LaunchScreen.storyboard */,
+				12FEE7AA1FF4CD840005D58B /* Models */,
+				12FEE7A91FF4CD780005D58B /* Views */,
+				121235B61FF4CC7A00B9C853 /* Resource */,
+				128ADD771FF389260093F5C9 /* weibo */,
 				125ED8CA1FF32F4F0019043E /* Info.plist */,
 			);
 			path = AirLook;
@@ -147,8 +177,27 @@
 				128ADD861FF38EF20093F5C9 /* Security.framework */,
 				128ADD851FF38EEC0093F5C9 /* SystemConfiguration.framework */,
 				128ADD831FF38EDE0093F5C9 /* ImageIO.framework */,
+				8A184FAC753FA596D7D119B0 /* Pods_AirLook.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12FEE7A91FF4CD780005D58B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				128ADD571FF373BA0093F5C9 /* WeiBoImage.swift */,
+				1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		12FEE7AA1FF4CD840005D58B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				121235B41FF4CC3100B9C853 /* HKNetwork.swift */,
+				12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 125ED8CD1FF32F4F0019043E /* Build configuration list for PBXNativeTarget "AirLook" */;
 			buildPhases = (
+				642C411B837CAB3C5231A1F8 /* [CP] Check Pods Manifest.lock */,
 				125ED8B51FF32F4F0019043E /* Sources */,
 				125ED8B61FF32F4F0019043E /* Frameworks */,
 				125ED8B71FF32F4F0019043E /* Resources */,
+				30D18DAB1FD6958BCD9E7A49 /* [CP] Embed Pods Frameworks */,
+				2CB49FAC86F732F67F283F65 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,14 +273,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2CB49FAC86F732F67F283F65 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirLook/Pods-AirLook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30D18DAB1FD6958BCD9E7A49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirLook/Pods-AirLook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		642C411B837CAB3C5231A1F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		125ED8B51FF32F4F0019043E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				128ADD581FF373BA0093F5C9 /* WeiBoImage.swift in Sources */,
+				12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */,
 				125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */,
+				1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */,
 				125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */,
+				121235B51FF4CC3100B9C853 /* HKNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +466,7 @@
 		};
 		125ED8CE1FF32F4F0019043E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E1D1288C56DB8939C599AAF /* Pods-AirLook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -386,6 +490,7 @@
 		};
 		125ED8CF1FF32F4F0019043E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC325AE4D971BA60FCA21C28 /* Pods-AirLook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
