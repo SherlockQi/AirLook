@@ -19,7 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var weibo:[UIView]?
     var selectNode:SCNNode?
     let animDuration = 0.75
-    let rootNode = SCNNode()
+    let mainNode = SCNNode()
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
     
     override func viewDidLoad() {
@@ -28,6 +28,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         let scene = SCNScene()
         sceneView.scene = scene
+        
         sceneView.antialiasingMode = SCNAntialiasingMode.multisampling4X
         //MARK:点击事件
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle(gesture:)))
@@ -71,13 +72,14 @@ extension ViewController{
         let nodeAreaH:Float = Float(nodeSizeH)
         print(timeLineSource)
         let sp = SCNSphere(radius: 0.02)
-        rootNode.geometry = sp
-        rootNode.position = SCNVector3Make(0, 0, -1)
-        sceneView.scene.rootNode.addChildNode(rootNode)
+        mainNode.geometry = sp
+        mainNode.position = SCNVector3Make(0, 0, -0.5)
+        sceneView.scene.rootNode.addChildNode(mainNode)
         
         
         for index in 0..<(maxCross*maxLine) {
             let weiBoBox = SCNBox(width: CGFloat(nodeSizeW), height: CGFloat(nodeSizeH), length: 0.02, chamferRadius: 0.02)
+            
             let weiBoNode = SCNNode(geometry: weiBoBox)
             let cross:Float = Float(index/maxCross)
             let line:Float = Float(index%maxLine)
@@ -88,16 +90,16 @@ extension ViewController{
             let emptyNode = SCNNode()
             emptyNode.position = SCNVector3Zero
             emptyNode.rotation = SCNVector4Make(1, 0, 0, -(line-2)*0.15)
-            let action = SCNAction.rotateBy(x: 0, y: CGFloat(-(cross-2)*0.6), z: 0, duration: 0)
-            emptyNode.runAction(action)
+            let actionR = SCNAction.rotateBy(x: 0, y: CGFloat(-(cross-2)*0.6), z: 0, duration: 0)
+//            let actionF = SCNAction.fadeOpacity(by: 0.5, duration: 0)
+//            let actionGroup = SCNAction.group([actionR,actionF])
+//            emptyNode.runAction(actionGroup)
+            emptyNode.runAction(actionR)
             emptyNode.addChildNode(weiBoNode)
-            rootNode.addChildNode(emptyNode)
+            mainNode.addChildNode(emptyNode)
             
             if timeLineSource.count > index {
-                
-                HKPainter().drawImage(model: timeLineSource[index])
-                
-
+                HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoBox)
             }
         }
     }

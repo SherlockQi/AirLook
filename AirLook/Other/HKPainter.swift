@@ -16,8 +16,9 @@ class HKPainter: NSObject {
     var contentImage:UIImage?
     
     
-    func drawImage(model:HKWeiBoModel){
+    func drawImage(model:HKWeiBoModel,weiboBox:SCNBox){
         self.model = model
+        self.senceNode = weiboBox
         self.loadIcon()
     }
     
@@ -33,7 +34,13 @@ class HKPainter: NSObject {
             }else{
                 let img = UIImage(data:data!)
                 print(img!)
-                self.drawBegin(icon: img)
+                
+                
+                DispatchQueue.main.async {
+                    
+                    self.drawBegin(icon: img)
+                }
+                
             }
         }) 
         dataTask.resume()
@@ -41,16 +48,18 @@ class HKPainter: NSObject {
     
     
     func drawBegin(icon:UIImage?){
-        let imageSize = CGSize(width: 1000, height: 600)
+        let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        let imageSize = CGSize(width: 1000, height: 750)
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
         //获得 图形上下文
         let context = UIGraphicsGetCurrentContext()
         //背景色
-        context?.addRect(CGRect(x: 0, y: 0, width: 900, height: 500))
-        context?.setFillColor(UIColor.green.cgColor)
+        context?.addRect(CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
+        context?.setFillColor(whiteColor.cgColor)
         context?.fillPath()
         //头像
-        icon?.draw(in: CGRect(x: 15, y: 15, width: 80, height: 80))
+        icon?.draw(in: CGRect(x: 15, y: 15, width: 200, height: 200))
         //文字
         let color = UIColor.darkText
         let font = UIFont.systemFont(ofSize: 40)
@@ -65,8 +74,15 @@ class HKPainter: NSObject {
         
         
         
-        let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        let imageView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        imageView.image = contentImage
+        UIApplication.shared.keyWindow?.addSubview(imageView)
+        
+        
+        
         let images = [contentImage!,whiteColor,whiteColor,whiteColor,whiteColor,whiteColor] as [Any]
+//        let images = [whiteColor,whiteColor,whiteColor,whiteColor,whiteColor,whiteColor] as [Any]
+
         var materials:[SCNMaterial] = []
         for index in 0..<6 {
             let material = SCNMaterial()

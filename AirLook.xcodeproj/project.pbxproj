@@ -139,11 +139,7 @@
 		125ED8BB1FF32F4F0019043E /* AirLook */ = {
 			isa = PBXGroup;
 			children = (
-				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
-				128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */,
-				125ED8C01FF32F4F0019043E /* ViewController.swift */,
-				12FF35D61FFB342000CAB502 /* HKMacro.swift */,
-				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
+				12FF35DE1FFB7C2E00CAB502 /* Other */,
 				12FEE7AA1FF4CD840005D58B /* Models */,
 				12FEE7A91FF4CD780005D58B /* Views */,
 				121235B61FF4CC7A00B9C853 /* Resource */,
@@ -190,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */,
+				125ED8C01FF32F4F0019043E /* ViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +198,17 @@
 				12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		12FF35DE1FFB7C2E00CAB502 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				12FF35D61FFB342000CAB502 /* HKMacro.swift */,
+				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
+				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
+				128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,7 +494,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XiaQi.AirLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AirLook/AirLook-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AirLook/Other/AirLook-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,7 +518,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XiaQi.AirLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AirLook/AirLook-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AirLook/Other/AirLook-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
