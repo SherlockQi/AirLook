@@ -34,7 +34,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(onRecviceSINA_CODE_Notification(notification:)), name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil)
         
-              loginWeiBo()
+        if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
+            loadWeiBo(token:token as! String)
+        }else{
+            loginWeiBo()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,19 +68,12 @@ extension ViewController{
         let maxLine  = 5
         let nodeSizeW = 0.4
         let nodeSizeH = 0.3
-        //        let nodeMargin = 0.1
-        //        let nodeAreaW:Float = Float(nodeSizeW/* + nodeMargin*/)
-        let nodeAreaH:Float = Float(nodeSizeH/* + nodeMargin*/)
-        
-        
+        let nodeAreaH:Float = Float(nodeSizeH)
         print(timeLineSource)
-        
         let sp = SCNSphere(radius: 0.02)
         rootNode.geometry = sp
         rootNode.position = SCNVector3Make(0, 0, -1)
         sceneView.scene.rootNode.addChildNode(rootNode)
-        
-        
         
         
         for index in 0..<(maxCross*maxLine) {
@@ -95,21 +92,12 @@ extension ViewController{
             emptyNode.runAction(action)
             emptyNode.addChildNode(weiBoNode)
             rootNode.addChildNode(emptyNode)
-            //            let contentImage = WeiBoImage.image(text: "一二三四五六七八九十十一十二十三十四十五十六十七十八十九二十")
-            
-            
             
             if timeLineSource.count > index {
-                let contentImage = WeiBoImage.image(model: timeLineSource[index])
-                let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-                let images = [contentImage,whiteColor,whiteColor,whiteColor,whiteColor,whiteColor]
-                var materials:[SCNMaterial] = []
-                for index in 0..<6 {
-                    let material = SCNMaterial()
-                    material.multiply.contents = images[index]
-                    materials.append(material)
-                }
-                weiBoBox.materials = materials
+                
+                HKPainter().drawImage(model: timeLineSource[index])
+                
+
             }
         }
     }
@@ -148,8 +136,11 @@ extension ViewController{
          */
         let userAppInfo: Dictionary<String,String> = userinfoDic["app"] as! Dictionary
         refeshUserInfo(dic: userAppInfo as NSDictionary)
-        loadWeiBo(userinfoDic: userinfoDic as! Dictionary<String, Any>)
         
+        if let access_token = userinfoDic["access_token"]{
+            UserDefaults.standard.setValue(access_token, forKey: KEY_ACCESS_TOKEN)
+            loadWeiBo(token: access_token as! String)
+        }
     }
     //第三步 刷新用户界面
     func refeshUserInfo(dic : NSDictionary){
@@ -161,31 +152,29 @@ extension ViewController{
         //        self.nicknameLbl.text = nickname
         
     }
-    func loadWeiBo(userinfoDic:Dictionary<String, Any>){
+    func loadWeiBo(token:String){
         let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
-        if let access_token = userinfoDic["access_token"]{
-            let parameters:[String : Any] =  ["access_token":access_token,"count":2]
-            
-            Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
-                print(response)
-                
-                switch response.result {
-                case .success(let value):
-                    
-                    if let timeJsonArr:[JSON] = JSON(value)["statuses"].array{
-                        for index in 0..<timeJsonArr.count {
-                            if let dic = timeJsonArr[index].dictionary{
-                                let model:HKWeiBoModel = HKWeiBoModel.modelWithDic(dic:dic)
-                                self.timeLineSource.append(model)
-                            }
-                        }
-                        DispatchQueue.main.async {
-                            self.addWeiBoSence()
+        let parameters:[String : Any] =  ["access_token":token,"count":25]
+        /**
+         2.00rJJL_CZyTv8Db55698d3c6wzY_EE
+         */
+        Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
+            print(response)
+            switch response.result {
+            case .success(let value):
+                if let timeJsonArr:[JSON] = JSON(value)["statuses"].array{
+                    for index in 0..<timeJsonArr.count {
+                        if let dic = timeJsonArr[index].dictionary{
+                            let model:HKWeiBoModel = HKWeiBoModel.modelWithDic(dic:dic)
+                            self.timeLineSource.append(model)
                         }
                     }
-                case .failure(let error):
-                    print(error)
+                    DispatchQueue.main.async {
+                        self.addWeiBoSence()
+                    }
                 }
+            case .failure(let error):
+                print(error)
             }
         }
     }
