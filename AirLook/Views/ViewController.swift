@@ -88,16 +88,16 @@ extension ViewController{
             let z:Float = -1
             weiBoNode.position = SCNVector3Make(0,y,z)
             let emptyNode = SCNNode()
+            
             emptyNode.position = SCNVector3Zero
             emptyNode.rotation = SCNVector4Make(1, 0, 0, -(line-2)*0.15)
+           
             let actionR = SCNAction.rotateBy(x: 0, y: CGFloat(-(cross-2)*0.6), z: 0, duration: 0)
-//            let actionF = SCNAction.fadeOpacity(by: 0.5, duration: 0)
-//            let actionGroup = SCNAction.group([actionR,actionF])
-//            emptyNode.runAction(actionGroup)
             emptyNode.runAction(actionR)
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
-            
+            //透明度
+            emptyNode.setValue(0.85, forKey: "opacity")
             if timeLineSource.count > index {
                 HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoBox)
             }
