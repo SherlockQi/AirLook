@@ -78,7 +78,7 @@ extension ViewController{
         
         
         for index in 0..<(maxCross*maxLine) {
-            let weiBoBox = SCNBox(width: CGFloat(nodeSizeW), height: CGFloat(nodeSizeH), length: 0.02, chamferRadius: 0.02)
+            let weiBoBox = SCNBox(width: CGFloat(nodeSizeW), height: CGFloat(nodeSizeH), length: 0.03, chamferRadius: 0.02)
             
             let weiBoNode = SCNNode(geometry: weiBoBox)
             let cross:Float = Float(index/maxCross)
@@ -97,13 +97,12 @@ extension ViewController{
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
             //透明度
-            emptyNode.setValue(0.85, forKey: "opacity")
+            emptyNode.setValue(0.8, forKey: "opacity")
             if timeLineSource.count > index {
                 HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoBox)
             }
         }
     }
-    
 }
 //MARK:登陆&获取信息
 extension ViewController{

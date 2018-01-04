@@ -59,25 +59,35 @@ class HKPainter: NSObject {
         context?.setFillColor(whiteColor.cgColor)
         context?.fillPath()
         //头像
-        icon?.draw(in: CGRect(x: 15, y: 15, width: 200, height: 200))
+        icon?.draw(in: CGRect(x: 25, y: 25, width: 200, height: 200))
         //微博名
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let nameColor = UIColor.darkText
-        let nameFont = UIFont.systemFont(ofSize: 50)
+        let nameFont = UIFont(name: "PingFangSC-Semibold",size: 50)!
         let nameAttributes = [NSAttributedStringKey.foregroundColor: nameColor, NSAttributedStringKey.font: nameFont]
         let screen_name:String = self.model?.user?.screen_name ?? ""
-        let nameRect = CGRect(x: 230, y: 15, width: 800, height: 80)
+        let nameRect = CGRect(x: 250, y: 25, width: 800, height: 80)
         screen_name.draw(with: nameRect, options: option, attributes: nameAttributes, context: nil)
-        
-        
+        //时间
+        let timeOption = NSStringDrawingOptions.usesLineFragmentOrigin
+        let timeColor = UIColor.darkGray
+        let timeFont = UIFont(name: "PingFangSC-Semibold",size: 40)!
+        let timeAttributes = [NSAttributedStringKey.foregroundColor: timeColor, NSAttributedStringKey.font: timeFont]
+        let time:String = self.model?.created_at ?? ""
+        let timeRect = CGRect(x: 250, y: 150, width: 800, height: 80)
+        time.draw(with: timeRect, options: timeOption, attributes: timeAttributes, context: nil)
+
+
+
         //文字
         let color = UIColor.darkText
-        let font = UIFont.systemFont(ofSize: 50)
+//        let font = UIFont(name: "TimesNewRomanPS-BoldMT",size: 50)!
+          let font = UIFont.systemFont(ofSize: 50)
         let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font]
         context?.setFillColor(UIColor.red.cgColor)
         let text = self.model?.text ?? ""
         let rect:CGRect = text.boundingRect(with: CGSize(width: 970, height: 500), options: option, attributes: attributes, context: nil)
-        let textRect = CGRect(x: 15, y: 230, width: rect.size.width, height: rect.size.height)
+        let textRect = CGRect(x: 25, y: 230, width: rect.size.width - 50, height: rect.size.height)
         text.draw(with: textRect, options: option, attributes: attributes, context: nil)
         contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

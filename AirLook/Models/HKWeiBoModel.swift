@@ -26,6 +26,8 @@ class HKWeiBoModel: NSObject {
     var attitudes_count:Int?
     //配图图片
     var pic_ids:[String]?
+    //时间
+    var created_at:String?
     
     
     class func modelWithDic(dic:[String : JSON]) -> HKWeiBoModel {
@@ -33,6 +35,7 @@ class HKWeiBoModel: NSObject {
         model.id = dic["id"]?.int
         model.text = dic["text"]?.string
         model.source = dic["source"]?.string
+        model.created_at = dic["created_at"]?.string
         model.reposts_count = dic["reposts_count"]?.int
         model.comments_count = dic["comments_count"]?.int
         model.attitudes_count = dic["attitudes_count"]?.int
