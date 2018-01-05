@@ -34,12 +34,18 @@ class HKWeiBoModel: NSObject {
         let model = HKWeiBoModel()
         model.id = dic["id"]?.int
         model.text = dic["text"]?.string
-        model.source = dic["source"]?.string
-        model.created_at = dic["created_at"]?.string
+       
         model.reposts_count = dic["reposts_count"]?.int
         model.comments_count = dic["comments_count"]?.int
         model.attitudes_count = dic["attitudes_count"]?.int
         model.pic_ids = dic["pic_ids"]?.arrayObject as? [String]
+     
+        if let time = dic["created_at"]?.string{
+            model.created_at  = HKTools.weiBoTime(time: time)
+        }
+        if let source = dic["source"]?.string{
+            model.source = HKTools().takeUpSource(source: source)
+        }
         
         if let jsonUser =  dic["user"]?.dictionary{
             let userModel = HKUserModel.modelWithDic(dic:jsonUser )
@@ -48,14 +54,12 @@ class HKWeiBoModel: NSObject {
         return model
     }
     
-    
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         print("forUndefinedKey:\(key)")
     }
     override func setValue(_ value: Any?, forKey key: String) {
         super.setValue(value, forKey: key)
     }
-    
 }
 
 class HKUserModel: NSObject {

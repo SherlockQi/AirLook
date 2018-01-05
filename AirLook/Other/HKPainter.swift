@@ -23,7 +23,7 @@ class HKPainter: NSObject {
     }
     
     func loadIcon(){
-
+        
         let url = URL(string: (model?.user?.profile_image_url!)!)!
         let request = URLRequest(url: url)
         let session = URLSession.shared
@@ -33,14 +33,9 @@ class HKPainter: NSObject {
                 print(error.debugDescription)
             }else{
                 let img = UIImage(data:data!)
-                print(img!)
-                
-                
                 DispatchQueue.main.async {
-                    
                     self.drawBegin(icon: img)
                 }
-                
             }
         }) 
         dataTask.resume()
@@ -71,18 +66,25 @@ class HKPainter: NSObject {
         //时间
         let timeOption = NSStringDrawingOptions.usesLineFragmentOrigin
         let timeColor = UIColor.darkGray
-        let timeFont = UIFont(name: "PingFangSC-Semibold",size: 40)!
+        let timeFont = UIFont(name: "PingFangSC-Regular",size: 40)!
         let timeAttributes = [NSAttributedStringKey.foregroundColor: timeColor, NSAttributedStringKey.font: timeFont]
-        let time:String = self.model?.created_at ?? ""
-        let timeRect = CGRect(x: 250, y: 150, width: 800, height: 80)
+        let time:String =  self.model?.created_at ?? ""
+        let tRect:CGRect = time.boundingRect(with: CGSize(width: 970, height: 500), options: option, attributes: timeAttributes, context: nil)
+        let timeRect = CGRect(x: 250, y: 140, width: tRect.size.width, height: 80)
         time.draw(with: timeRect, options: timeOption, attributes: timeAttributes, context: nil)
-
-
-
+        //来源
+        let sourceOption = NSStringDrawingOptions.usesLineFragmentOrigin
+        let sourceColor = UIColor(red: 80/256.0, green: 182/256.0, blue: 244/256.0, alpha: 1)
+        let sourceFont = UIFont(name: "PingFangSC-Semibold",size: 40)!
+        let sourceAttributes = [NSAttributedStringKey.foregroundColor: sourceColor, NSAttributedStringKey.font: sourceFont]
+        let source:String =  self.model?.source ?? ""
+        let sourceRect = CGRect(x: timeRect.maxX + 15, y: 140, width: 500, height: 80)
+        source.draw(with: sourceRect, options: sourceOption, attributes: sourceAttributes, context: nil)
         //文字
         let color = UIColor.darkText
-//        let font = UIFont(name: "TimesNewRomanPS-BoldMT",size: 50)!
-          let font = UIFont.systemFont(ofSize: 50)
+        
+//        let font = UIFont.systemFont(ofSize: 50)
+        let font =  UIFont(name: "GillSans-Italic",size: 50)!
         let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font]
         context?.setFillColor(UIColor.red.cgColor)
         let text = self.model?.text ?? ""
@@ -92,11 +94,7 @@ class HKPainter: NSObject {
         contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        //MARK:test{
-        let imageView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        imageView.image = contentImage
-        UIApplication.shared.keyWindow?.addSubview(imageView)
-        //MARK:test}
+
         
         let images = [contentImage!,whiteColor,whiteColor,whiteColor,whiteColor,whiteColor] as [Any]
         var materials:[SCNMaterial] = []

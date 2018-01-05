@@ -10,9 +10,5 @@ import UIKit
 import ARKit
 
 class HKWeiBoNode: SCNNode {
-//    required init?(coder aDecoder: NSCoder) {
-//
-//    }
-    
-    
+
 }

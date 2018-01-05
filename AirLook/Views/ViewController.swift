@@ -67,37 +67,33 @@ extension ViewController{
     func addWeiBoSence(){
         let maxCross = 5
         let maxLine  = 5
-        let nodeSizeW = 0.4
-        let nodeSizeH = 0.3
-        let nodeAreaH:Float = Float(nodeSizeH)
+        let nodeSizeW = 0.5
+        let nodeSizeH = nodeSizeW * 0.6
+        let nodeAreaH:Float = Float(nodeSizeH + 0.2)
         print(timeLineSource)
         let sp = SCNSphere(radius: 0.02)
         mainNode.geometry = sp
-        mainNode.position = SCNVector3Make(0, 0, -0.5)
+        mainNode.position = SCNVector3Make(0, 0, 0.5)
         sceneView.scene.rootNode.addChildNode(mainNode)
-        
-        
         for index in 0..<(maxCross*maxLine) {
             let weiBoBox = SCNBox(width: CGFloat(nodeSizeW), height: CGFloat(nodeSizeH), length: 0.03, chamferRadius: 0.02)
-            
             let weiBoNode = SCNNode(geometry: weiBoBox)
             let cross:Float = Float(index/maxCross)
             let line:Float = Float(index%maxLine)
             
-            let y:Float = nodeAreaH * 2 - (line*nodeAreaH)
-            let z:Float = -1
+            let y:Float = nodeAreaH * 2 - (line * nodeAreaH)
+            let z:Float = -2 + fabsf((2 - line)*0.1)
             weiBoNode.position = SCNVector3Make(0,y,z)
             let emptyNode = SCNNode()
-            
             emptyNode.position = SCNVector3Zero
-            emptyNode.rotation = SCNVector4Make(1, 0, 0, -(line-2)*0.15)
-           
-            let actionR = SCNAction.rotateBy(x: 0, y: CGFloat(-(cross-2)*0.6), z: 0, duration: 0)
+            weiBoNode.rotation = SCNVector4Make(1, 0, 0, -(line-2)*0.25)
+            let rotateY:CGFloat = CGFloat((2 - cross)*0.40)
+            let actionR = SCNAction.rotateBy(x: 0, y: rotateY, z: 0, duration: 0)
             emptyNode.runAction(actionR)
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
             //透明度
-            emptyNode.setValue(0.8, forKey: "opacity")
+            emptyNode.setValue(0.78, forKey: "opacity")
             if timeLineSource.count > index {
                 HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoBox)
             }

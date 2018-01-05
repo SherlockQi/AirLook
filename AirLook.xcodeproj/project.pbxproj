@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		121235B51FF4CC3100B9C853 /* HKNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121235B41FF4CC3100B9C853 /* HKNetwork.swift */; };
+		122870D81FFF151D00F9DA46 /* Date+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D71FFF151D00F9DA46 /* Date+Category.swift */; };
+		122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D91FFF1AF600F9DA46 /* HKTools.swift */; };
 		1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
 		125ED8BF1FF32F4F0019043E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8BE1FF32F4F0019043E /* art.scnassets */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		121235B41FF4CC3100B9C853 /* HKNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKNetwork.swift; sourceTree = "<group>"; };
+		122870D71FFF151D00F9DA46 /* Date+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Category.swift"; sourceTree = "<group>"; };
+		122870D91FFF1AF600F9DA46 /* HKTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTools.swift; sourceTree = "<group>"; };
 		1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoNode.swift; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		125ED8BC1FF32F4F0019043E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 				12FF35D61FFB342000CAB502 /* HKMacro.swift */,
 				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
 				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
+				122870D91FFF1AF600F9DA46 /* HKTools.swift */,
+				122870D71FFF151D00F9DA46 /* Date+Category.swift */,
 				128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */,
 			);
 			path = Other;
@@ -340,8 +346,10 @@
 			files = (
 				12FF35DD1FFB739B00CAB502 /* HKPainter.swift in Sources */,
 				12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */,
+				122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */,
 				125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */,
 				1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */,
+				122870D81FFF151D00F9DA46 /* Date+Category.swift in Sources */,
 				125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */,
 				121235B51FF4CC3100B9C853 /* HKNetwork.swift in Sources */,
 				12FF35D71FFB342000CAB502 /* HKMacro.swift in Sources */,
