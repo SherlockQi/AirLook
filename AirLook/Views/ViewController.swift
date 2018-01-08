@@ -18,7 +18,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var weibo:[UIView]?
     var selectNode:SCNNode?
-    let animDuration = 0.75
+    let animDuration = 0.50
     let mainNode = SCNNode()
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
     
@@ -59,7 +59,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     deinit{
         NotificationCenter.default.removeObserver(self)
     }
-    
 }
 //MARK:节点组装
 extension ViewController{
@@ -93,7 +92,8 @@ extension ViewController{
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
             //透明度
-            emptyNode.setValue(0.78, forKey: "opacity")
+            weiBoNode.setValue(0.78, forKey: "opacity")
+            
             if timeLineSource.count > index {
                 HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoBox)
             }
@@ -188,26 +188,34 @@ extension ViewController{
             return
         }
         // 点击到的节点
-        let node = firstNode.node.copy() as! SCNNode
-        
+//        let node = firstNode.node.copy() as! SCNNode
+        let node = firstNode.node
+
         if firstNode.node == self.selectNode {
-            
-            let newPosition  = SCNVector3Make(firstNode.node.worldPosition.x*2, firstNode.node.worldPosition.y*2, firstNode.node.worldPosition.z*2)
-            let comeOut = SCNAction.move(to: newPosition, duration: animDuration)
-            firstNode.node.runAction(comeOut)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + animDuration, execute: {
-                firstNode.node.removeFromParentNode()
-            })
+            self.toSmall(node: node)
         }else{
-            self.selectNode?.removeFromParentNode()
-            node.position = firstNode.node.worldPosition
-            let newPosition  = SCNVector3Make(firstNode.node.worldPosition.x/2, firstNode.node.worldPosition.y/2, firstNode.node.worldPosition.z/2)
-            node.rotation = (sceneView.pointOfView?.rotation)!
-            sceneView.scene.rootNode.addChildNode(node)
-            //            rootNode.addChildNode(node)
-            let comeOn = SCNAction.move(to: newPosition, duration: animDuration)
-            node.runAction(comeOn)
-            selectNode = node
+            self.toSmall(node:selectNode)
+            self.toBig(node: node)
         }
     }
+    func toBig(node:SCNNode) {
+        let newPosition  = SCNVector3Make(node.position.x/1.6, node.position.y/1.6, node.position.z/1.6)
+        let comeOnMove = SCNAction.move(to: newPosition, duration: animDuration)
+        let comeOnFade = SCNAction.fadeOpacity(by: 1.0, duration: animDuration)
+        let comeOnGroup = SCNAction.group([comeOnMove,comeOnFade])
+        node.runAction(comeOnGroup)
+        selectNode = node
+    }
+    
+    func toSmall(node:SCNNode?) {
+        if node != nil{
+        let newPosition  = SCNVector3Make(node!.position.x/0.625, node!.position.y/0.625, node!.position.z/0.625)
+        let comeOnMove = SCNAction.move(to: newPosition, duration: animDuration)
+        let comeOnFade = SCNAction.fadeOpacity(to: 0.78, duration: animDuration)
+        let comeOnGroup = SCNAction.group([comeOnMove,comeOnFade])
+        node!.runAction(comeOnGroup)
+        selectNode = nil
+        }
+    }
+    
 }

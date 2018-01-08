@@ -88,8 +88,8 @@ class HKPainter: NSObject {
         let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font]
         context?.setFillColor(UIColor.red.cgColor)
         let text = self.model?.text ?? ""
-        let rect:CGRect = text.boundingRect(with: CGSize(width: 970, height: 500), options: option, attributes: attributes, context: nil)
-        let textRect = CGRect(x: 25, y: 230, width: rect.size.width - 50, height: rect.size.height)
+        let rect:CGRect = text.boundingRect(with: CGSize(width: 950, height: 500), options: option, attributes: attributes, context: nil)
+        let textRect = CGRect(x: 25, y: 230, width: rect.size.width, height: rect.size.height)
         text.draw(with: textRect, options: option, attributes: attributes, context: nil)
         contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
