@@ -33,6 +33,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //MARK:点击事件
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle(gesture:)))
         sceneView.addGestureRecognizer(tap)
+        //MARK:拖拽事件
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panHandle(gesture:)))
+        sceneView.addGestureRecognizer(pan)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(onRecviceSINA_CODE_Notification(notification:)), name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil)
         
         if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
@@ -181,14 +185,11 @@ extension ViewController{
 //MARK:节点点击事件
 extension ViewController{
     @objc func tapHandle(gesture:UITapGestureRecognizer){
-        
-        
         let results:[SCNHitTestResult] = (self.sceneView?.hitTest(gesture.location(ofTouch: 0, in: self.sceneView), options: nil))!
         guard let firstNode  = results.first else{
             return
         }
         // 点击到的节点
-//        let node = firstNode.node.copy() as! SCNNode
         let node = firstNode.node
 
         if firstNode.node == self.selectNode {
@@ -196,6 +197,10 @@ extension ViewController{
         }else{
             self.toSmall(node:selectNode)
             self.toBig(node: node)
+            //MARK:拖拽事件
+
+//
+        
         }
     }
     func toBig(node:SCNNode) {
@@ -217,5 +222,15 @@ extension ViewController{
         selectNode = nil
         }
     }
-    
+}
+
+//MARK:节点拖动事件
+extension ViewController{
+    //[recognizer setTranslation:CGPointZero inView:recognizer.view];
+    @objc func panHandle(gesture:UITapGestureRecognizer){
+        print(gesture)
+        
+        
+        
+    }
 }

@@ -41,6 +41,29 @@ class HKPainter: NSObject {
         dataTask.resume()
     }
     
+    func loadImage(){
+
+        if let urlStr = model?.pic_urls?.first{
+            print(urlStr)
+
+            let url = URL(string: urlStr)!
+            let request = URLRequest(url: url)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request, completionHandler: {
+                (data, response, error) -> Void in
+                if error != nil{
+                    print(error.debugDescription)
+                }else{
+                    let img = UIImage(data:data!)
+                    DispatchQueue.main.async {
+//                        self.drawBegin(icon: img)
+                        print(urlStr)
+                    }
+                }
+            })
+            dataTask.resume()
+        }
+    }
     
     func drawBegin(icon:UIImage?){
         let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
@@ -82,8 +105,6 @@ class HKPainter: NSObject {
         source.draw(with: sourceRect, options: sourceOption, attributes: sourceAttributes, context: nil)
         //文字
         let color = UIColor.darkText
-        
-//        let font = UIFont.systemFont(ofSize: 50)
         let font =  UIFont(name: "GillSans-Italic",size: 50)!
         let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font]
         context?.setFillColor(UIColor.red.cgColor)
@@ -91,10 +112,49 @@ class HKPainter: NSObject {
         let rect:CGRect = text.boundingRect(with: CGSize(width: 950, height: 500), options: option, attributes: attributes, context: nil)
         let textRect = CGRect(x: 25, y: 230, width: rect.size.width, height: rect.size.height)
         text.draw(with: textRect, options: option, attributes: attributes, context: nil)
+        
+        //图片
+
+        loadImage()
+        
+        
+        
+        
+        
+        //转发
+        
+        
+        if ((self.model?.retweeted_status) != nil)  {
+            
+            
+            
+            let zfContext = UIGraphicsGetCurrentContext()
+            let zfBackRect = CGRect(x: 25, y:textRect.maxY + 25, width: 1000 - 50, height: 600 - rect.maxY - 25)
+            zfContext?.addRect(zfBackRect)
+            let zfColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.1)
+            zfContext?.setFillColor(zfColor.cgColor)
+            zfContext?.fillPath()
+            
+            let zfTextcolor = UIColor.darkText
+            let zfFont =  UIFont(name: "GillSans-Italic",size: 45)!
+            let zfAttributes = [NSAttributedStringKey.foregroundColor: zfTextcolor, NSAttributedStringKey.font: zfFont]
+            
+            
+            if let zfText = self.model?.retweeted_status?.text{
+                let zfRect:CGRect = zfText.boundingRect(with: CGSize(width: 920, height: 500), options: option, attributes: timeAttributes, context: nil)
+                let zfR = CGRect(x: zfBackRect.minX + 15, y: zfBackRect.minY + 15, width: zfRect.size.width, height: zfRect.size.height)
+                zfText.draw(with: zfR, options: sourceOption, attributes: zfAttributes, context: nil)
+            }
+        }
+        
+        
+        
+        
+        
         contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-
+        
         
         let images = [contentImage!,whiteColor,whiteColor,whiteColor,whiteColor,whiteColor] as [Any]
         var materials:[SCNMaterial] = []

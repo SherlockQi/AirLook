@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AirLook/HKPainter.swift"
-            timestampString = "536574957.34519"
+            filePath = "AirLook/Models/HKWeiBoModel.swift"
+            timestampString = "537172948.375942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "drawBegin(icon:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "modelWithDic(dic:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,14 +25,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AirLook/HKPainter.swift"
-            timestampString = "536574957.345616"
+            filePath = "AirLook/Models/HKWeiBoModel.swift"
+            timestampString = "537172948.376274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "drawBegin(icon:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "modelWithDic(dic:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AirLook.HKWeiBoModel.modelWithDic(dic: Swift.Dictionary&lt;Swift.String, SwiftyJSON.JSON&gt;) -&gt; AirLook.HKWeiBoModel"
+                  moduleName = "AirLook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Models/HKWeiBoModel.swift"
+                  timestampString = "537196055.036094"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "8240">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #3 : @autoclosure () throws -&gt; Swift.String in static AirLook.HKWeiBoModel.modelWithDic(dic: Swift.Dictionary&lt;Swift.String, SwiftyJSON.JSON&gt;) -&gt; AirLook.HKWeiBoModel"
+                  moduleName = "AirLook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Models/HKWeiBoModel.swift"
+                  timestampString = "537196055.038326"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,77 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AirLook/Other/HKTools.swift"
-            timestampString = "536826841.423308"
+            filePath = "AirLook/Views/ViewController.swift"
+            timestampString = "537196054.327624"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "takeUpSource(source:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AirLook/Other/HKTools.swift"
-            timestampString = "536826841.423383"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "takeUpSource(source:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AirLook/Other/HKTools.swift"
-            timestampString = "536826841.423438"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "takeUpSource(source:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AirLook/Other/HKTools.swift"
-            timestampString = "536826841.423485"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "takeUpSource(source:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AirLook/Other/HKTools.swift"
-            timestampString = "536826841.42353"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "takeUpSource(source:)"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "panHandle(gesture:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
