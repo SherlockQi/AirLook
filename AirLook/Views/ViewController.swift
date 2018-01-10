@@ -227,10 +227,20 @@ extension ViewController{
 //MARK:节点拖动事件
 extension ViewController{
     //[recognizer setTranslation:CGPointZero inView:recognizer.view];
-    @objc func panHandle(gesture:UITapGestureRecognizer){
+    @objc func panHandle(gesture:UIPanGestureRecognizer){
         print(gesture)
+        let point = gesture.translation(in: self.view)
+        print(point)
         
-        
-        
+        let  x = self.selectNode?.position.x ?? 0
+        let  y = self.selectNode?.position.y ?? 0
+        let  z = self.selectNode?.position.z ?? 0
+        let  yFloat = y - Float(point.y)*0.002
+        self.selectNode?.position = SCNVector3Make(x,yFloat,z)
+      
+        selectNode?.rotation = SCNVector4Make(0, 0, 0, 0)
+
+//           let actionR = SCNAction.rotateBy(x: x, y: yFloat, z: z, duration: 0.1)
+        gesture.setTranslation(CGPoint.zero, in: self.view)
     }
 }
