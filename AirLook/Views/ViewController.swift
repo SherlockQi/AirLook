@@ -17,7 +17,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     var weibo:[UIView]?
-    var selectNode:SCNNode?
+    var selectNode:HKWeiBoNode?
     let animDuration = 0.50
     let mainNode = SCNNode()
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
@@ -68,38 +68,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 extension ViewController{
     
     func addWeiBoSence(){
-        let maxCross = 5
-        let maxLine  = 5
-        let nodeSizeW = 0.5
-        let nodeSizeH = nodeSizeW * 0.6
-        let nodeAreaH:Float = Float(nodeSizeH + 0.2)
+
         print(timeLineSource)
         let sp = SCNSphere(radius: 0.02)
         mainNode.geometry = sp
         mainNode.position = SCNVector3Make(0, 0, 0.5)
         sceneView.scene.rootNode.addChildNode(mainNode)
-        for index in 0..<(maxCross*maxLine) {
-            let weiBoBox = SCNBox(width: CGFloat(nodeSizeW), height: CGFloat(nodeSizeH), length: 0.03, chamferRadius: 0.02)
-            let weiBoNode = SCNNode(geometry: weiBoBox)
-            let cross:Float = Float(index/maxCross)
-            let line:Float = Float(index%maxLine)
-            
-            let y:Float = nodeAreaH * 2 - (line * nodeAreaH)
-            let z:Float = -2 + fabsf((2 - line)*0.1)
-            weiBoNode.position = SCNVector3Make(0,y,z)
+        for index in 0..<25 {
+            let weiBoNode = HKWeiBoNode(index: index)
+            let cross:Float = Float(index/5)
             let emptyNode = SCNNode()
             emptyNode.position = SCNVector3Zero
-            weiBoNode.rotation = SCNVector4Make(1, 0, 0, -(line-2)*0.25)
             let rotateY:CGFloat = CGFloat((2 - cross)*0.40)
             let actionR = SCNAction.rotateBy(x: 0, y: rotateY, z: 0, duration: 0)
             emptyNode.runAction(actionR)
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
-            //透明度
-            weiBoNode.setValue(0.78, forKey: "opacity")
-            
             if timeLineSource.count > index {
-                HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoBox)
+                HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoNode)
             }
         }
     }
@@ -189,36 +175,48 @@ extension ViewController{
         guard let firstNode  = results.first else{
             return
         }
+        
+//        if !firstNode.isMember(of: HKWeiBoNode.self) {
+//            return
+//        }
+//
+//        if !firstNode.isKind(of: HKWeiBoNode.self) {
+//            return
+//        }
+        
+        
         // 点击到的节点
         let node = firstNode.node
 
         if firstNode.node == self.selectNode {
-            self.toSmall(node: node)
+            self.toSmall(node: node as? HKWeiBoNode)
         }else{
             self.toSmall(node:selectNode)
-            self.toBig(node: node)
+            self.toBig(node: (node as? HKWeiBoNode)!)
             //MARK:拖拽事件
-
-//
-        
         }
     }
-    func toBig(node:SCNNode) {
-        let newPosition  = SCNVector3Make(node.position.x/1.6, node.position.y/1.6, node.position.z/1.6)
+    func toBig(node:HKWeiBoNode) {
+        
+        let newPosition  = SCNVector3Make(node.position.x/1.6, -0.1, -1.2)
         let comeOnMove = SCNAction.move(to: newPosition, duration: animDuration)
         let comeOnFade = SCNAction.fadeOpacity(by: 1.0, duration: animDuration)
-        let comeOnGroup = SCNAction.group([comeOnMove,comeOnFade])
+        let comeOnRotation = SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: 0.5)
+        let comeOnGroup = SCNAction.group([comeOnMove,comeOnFade,comeOnRotation])
         node.runAction(comeOnGroup)
         selectNode = node
     }
     
-    func toSmall(node:SCNNode?) {
+    func toSmall(node:HKWeiBoNode?) {
         if node != nil{
         let newPosition  = SCNVector3Make(node!.position.x/0.625, node!.position.y/0.625, node!.position.z/0.625)
-        let comeOnMove = SCNAction.move(to: newPosition, duration: animDuration)
-        let comeOnFade = SCNAction.fadeOpacity(to: 0.78, duration: animDuration)
-        let comeOnGroup = SCNAction.group([comeOnMove,comeOnFade])
-        node!.runAction(comeOnGroup)
+        let goAwayMove = SCNAction.move(to: newPosition, duration: animDuration)
+        let goAwayOnFade = SCNAction.fadeOpacity(to: 0.78, duration: animDuration)
+//            node.
+            let rotation_OriginalX:CGFloat = CGFloat(node?.rotation_OriginalX ?? 0)
+            let goAwayRotation = SCNAction.rotateTo(x: rotation_OriginalX, y: 0, z: 0, duration: 0.5)
+            let goAwayGroup = SCNAction.group([goAwayMove,goAwayOnFade,goAwayRotation])
+        node!.runAction(goAwayGroup)
         selectNode = nil
         }
     }
@@ -226,7 +224,6 @@ extension ViewController{
 
 //MARK:节点拖动事件
 extension ViewController{
-    //[recognizer setTranslation:CGPointZero inView:recognizer.view];
     @objc func panHandle(gesture:UIPanGestureRecognizer){
         print(gesture)
         let point = gesture.translation(in: self.view)
@@ -237,10 +234,7 @@ extension ViewController{
         let  z = self.selectNode?.position.z ?? 0
         let  yFloat = y - Float(point.y)*0.002
         self.selectNode?.position = SCNVector3Make(x,yFloat,z)
-      
         selectNode?.rotation = SCNVector4Make(0, 0, 0, 0)
-
-//           let actionR = SCNAction.rotateBy(x: x, y: yFloat, z: z, duration: 0.1)
         gesture.setTranslation(CGPoint.zero, in: self.view)
     }
 }

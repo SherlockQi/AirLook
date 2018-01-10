@@ -12,11 +12,11 @@ import SceneKit
 class HKPainter: NSObject {
     
     var model:HKWeiBoModel?
-    var senceNode:SCNBox?
+    var senceNode:HKWeiBoNode?
     var contentImage:UIImage?
     
     
-    func drawImage(model:HKWeiBoModel,weiboBox:SCNBox){
+    func drawImage(model:HKWeiBoModel,weiboBox:HKWeiBoNode){
         self.model = model
         self.senceNode = weiboBox
         self.loadIcon()
@@ -163,6 +163,7 @@ class HKPainter: NSObject {
             material.multiply.contents = images[index]
             materials.append(material)
         }
-        self.senceNode?.materials = materials
+//        self.senceNode?.materials = materials
+        self.senceNode?.geometry?.materials = materials
     }
 }
