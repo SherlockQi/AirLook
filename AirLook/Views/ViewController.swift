@@ -24,6 +24,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         sceneView.delegate = self
         sceneView.showsStatistics = true
         let scene = SCNScene()
@@ -68,7 +70,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 extension ViewController{
     
     func addWeiBoSence(){
-
+        
         print(timeLineSource)
         let sp = SCNSphere(radius: 0.02)
         mainNode.geometry = sp
@@ -84,8 +86,10 @@ extension ViewController{
             emptyNode.runAction(actionR)
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
+            
+            
             if timeLineSource.count > index {
-                HKPainter().drawImage(model: timeLineSource[index], weiboBox: weiBoNode)
+                 weiBoNode.model = timeLineSource[index]
             }
         }
     }
@@ -147,6 +151,16 @@ extension ViewController{
          */
         Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
             print(response)
+            print(response.description) //SUCCESS
+            let d = JSON(response)
+            print(d["request"])
+            let a = response.description
+            print(a)
+            
+            if let e = JSON(response)["SUCCESS"].array{
+                print(e)
+            }
+            
             switch response.result {
             case .success(let value):
                 if let timeJsonArr:[JSON] = JSON(value)["statuses"].array{
@@ -176,18 +190,18 @@ extension ViewController{
             return
         }
         
-//        if !firstNode.isMember(of: HKWeiBoNode.self) {
-//            return
-//        }
-//
-//        if !firstNode.isKind(of: HKWeiBoNode.self) {
-//            return
-//        }
+        //        if !firstNode.isMember(of: HKWeiBoNode.self) {
+        //            return
+        //        }
+        //
+        //        if !firstNode.isKind(of: HKWeiBoNode.self) {
+        //            return
+        //        }
         
         
         // 点击到的节点
         let node = firstNode.node
-
+        
         if firstNode.node == self.selectNode {
             self.toSmall(node: node as? HKWeiBoNode)
         }else{
@@ -197,27 +211,30 @@ extension ViewController{
         }
     }
     func toBig(node:HKWeiBoNode) {
-        
-        let newPosition  = SCNVector3Make(node.position.x/1.6, -0.1, -1.2)
-        let comeOnMove = SCNAction.move(to: newPosition, duration: animDuration)
-        let comeOnFade = SCNAction.fadeOpacity(by: 1.0, duration: animDuration)
-        let comeOnRotation = SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: 0.5)
-        let comeOnGroup = SCNAction.group([comeOnMove,comeOnFade,comeOnRotation])
-        node.runAction(comeOnGroup)
+        node.toBig()
         selectNode = node
+        
+        let shape = SCNPhysicsShape(geometry: node.geometry!, options: nil)
+        node.physicsBody = SCNPhysicsBody(type: .kinematic, shape: shape)
+
+        
+        let box = SCNBox(width: 0.5, height: 0.5, length: 0.5, chamferRadius: 0)
+        let nodeB = SCNNode(geometry: box)
+        let boxShape = SCNPhysicsShape(geometry: node.geometry!, options: nil)
+        
+        nodeB.physicsBody = SCNPhysicsBody(type: .dynamic, shape: boxShape)
+        let joint = SCNPhysicsHingeJoint(bodyA: node.physicsBody!,axisA: SCNVector3Make(1, 0, 0), anchorA: SCNVector3Make(0, 0, 0), bodyB: nodeB.physicsBody!, axisB: SCNVector3Make(1, 0, 0), anchorB: SCNVector3Make(0.5, 1, 0))
+      
+        mainNode.addChildNode(nodeB)
+
+        self.sceneView.scene.physicsWorld.addBehavior(joint)
+        
     }
     
     func toSmall(node:HKWeiBoNode?) {
         if node != nil{
-        let newPosition  = SCNVector3Make(node!.position.x/0.625, node!.position.y/0.625, node!.position.z/0.625)
-        let goAwayMove = SCNAction.move(to: newPosition, duration: animDuration)
-        let goAwayOnFade = SCNAction.fadeOpacity(to: 0.78, duration: animDuration)
-//            node.
-            let rotation_OriginalX:CGFloat = CGFloat(node?.rotation_OriginalX ?? 0)
-            let goAwayRotation = SCNAction.rotateTo(x: rotation_OriginalX, y: 0, z: 0, duration: 0.5)
-            let goAwayGroup = SCNAction.group([goAwayMove,goAwayOnFade,goAwayRotation])
-        node!.runAction(goAwayGroup)
-        selectNode = nil
+            node?.toSmall()
+            selectNode = nil
         }
     }
 }

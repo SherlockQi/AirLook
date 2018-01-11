@@ -11,6 +11,7 @@
 		122870D81FFF151D00F9DA46 /* Date+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D71FFF151D00F9DA46 /* Date+Category.swift */; };
 		122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D91FFF1AF600F9DA46 /* HKTools.swift */; };
 		1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */; };
+		1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1239AABD2005F12800ED20D5 /* UIImage+Category.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
 		125ED8BF1FF32F4F0019043E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8BE1FF32F4F0019043E /* art.scnassets */; };
 		125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8C01FF32F4F0019043E /* ViewController.swift */; };
@@ -31,6 +32,12 @@
 		128ADDA81FF396360093F5C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128ADDA71FF3962E0093F5C9 /* QuartzCore.framework */; };
 		128ADDAD1FF397630093F5C9 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 128ADDAA1FF397630093F5C9 /* libWeiboSDK.a */; };
 		128ADDAE1FF397630093F5C9 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 128ADDAB1FF397630093F5C9 /* WeiboSDK.bundle */; };
+		12C6E36C2006078E005F2BCD /* UIView+ITTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6E3612006078D005F2BCD /* UIView+ITTAdditions.m */; };
+		12C6E36D2006078E005F2BCD /* LoadIngHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6E3652006078D005F2BCD /* LoadIngHUD.m */; };
+		12C6E36E2006078E005F2BCD /* AMTumblrHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6E3662006078D005F2BCD /* AMTumblrHud.m */; };
+		12C6E36F2006078E005F2BCD /* ITTPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6E3682006078D005F2BCD /* ITTPromptView.m */; };
+		12C6E3702006078E005F2BCD /* ITTPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12C6E3692006078D005F2BCD /* ITTPromptView.xib */; };
+		12C6E3712006078E005F2BCD /* PoppingBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6E36A2006078D005F2BCD /* PoppingBaseView.m */; };
 		12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */; };
 		12FF35D71FFB342000CAB502 /* HKMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FF35D61FFB342000CAB502 /* HKMacro.swift */; };
 		12FF35DD1FFB739B00CAB502 /* HKPainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FF35DC1FFB739B00CAB502 /* HKPainter.swift */; };
@@ -42,6 +49,7 @@
 		122870D71FFF151D00F9DA46 /* Date+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Category.swift"; sourceTree = "<group>"; };
 		122870D91FFF1AF600F9DA46 /* HKTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTools.swift; sourceTree = "<group>"; };
 		1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoNode.swift; sourceTree = "<group>"; };
+		1239AABD2005F12800ED20D5 /* UIImage+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Category.swift"; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		125ED8BC1FF32F4F0019043E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		125ED8BE1FF32F4F0019043E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -69,6 +77,17 @@
 		128ADDAA1FF397630093F5C9 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		128ADDAB1FF397630093F5C9 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		128ADDAC1FF397630093F5C9 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		12C6E3602006078D005F2BCD /* UIView+ITTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ITTAdditions.h"; sourceTree = "<group>"; };
+		12C6E3612006078D005F2BCD /* UIView+ITTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ITTAdditions.m"; sourceTree = "<group>"; };
+		12C6E3622006078D005F2BCD /* ITTPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTPromptView.h; sourceTree = "<group>"; };
+		12C6E3642006078D005F2BCD /* AMTumblrHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTumblrHud.h; sourceTree = "<group>"; };
+		12C6E3652006078D005F2BCD /* LoadIngHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadIngHUD.m; sourceTree = "<group>"; };
+		12C6E3662006078D005F2BCD /* AMTumblrHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTumblrHud.m; sourceTree = "<group>"; };
+		12C6E3672006078D005F2BCD /* LoadIngHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadIngHUD.h; sourceTree = "<group>"; };
+		12C6E3682006078D005F2BCD /* ITTPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTPromptView.m; sourceTree = "<group>"; };
+		12C6E3692006078D005F2BCD /* ITTPromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITTPromptView.xib; sourceTree = "<group>"; };
+		12C6E36A2006078D005F2BCD /* PoppingBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoppingBaseView.m; sourceTree = "<group>"; };
+		12C6E36B2006078D005F2BCD /* PoppingBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoppingBaseView.h; sourceTree = "<group>"; };
 		12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoModel.swift; sourceTree = "<group>"; };
 		12FF35D61FFB342000CAB502 /* HKMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMacro.swift; sourceTree = "<group>"; };
 		12FF35DC1FFB739B00CAB502 /* HKPainter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKPainter.swift; sourceTree = "<group>"; };
@@ -143,6 +162,7 @@
 		125ED8BB1FF32F4F0019043E /* AirLook */ = {
 			isa = PBXGroup;
 			children = (
+				12C6E35F20060777005F2BCD /* 3DParty */,
 				12FF35DE1FFB7C2E00CAB502 /* Other */,
 				12FEE7AA1FF4CD840005D58B /* Models */,
 				12FEE7A91FF4CD780005D58B /* Views */,
@@ -186,6 +206,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		12C6E35F20060777005F2BCD /* 3DParty */ = {
+			isa = PBXGroup;
+			children = (
+				12C6E372200607A2005F2BCD /* ITTPromptView */,
+			);
+			path = 3DParty;
+			sourceTree = "<group>";
+		};
+		12C6E3632006078D005F2BCD /* AMTumblrHud */ = {
+			isa = PBXGroup;
+			children = (
+				12C6E3642006078D005F2BCD /* AMTumblrHud.h */,
+				12C6E3652006078D005F2BCD /* LoadIngHUD.m */,
+				12C6E3662006078D005F2BCD /* AMTumblrHud.m */,
+				12C6E3672006078D005F2BCD /* LoadIngHUD.h */,
+			);
+			path = AMTumblrHud;
+			sourceTree = "<group>";
+		};
+		12C6E372200607A2005F2BCD /* ITTPromptView */ = {
+			isa = PBXGroup;
+			children = (
+				12C6E3632006078D005F2BCD /* AMTumblrHud */,
+				12C6E3622006078D005F2BCD /* ITTPromptView.h */,
+				12C6E3682006078D005F2BCD /* ITTPromptView.m */,
+				12C6E3692006078D005F2BCD /* ITTPromptView.xib */,
+				12C6E36B2006078D005F2BCD /* PoppingBaseView.h */,
+				12C6E36A2006078D005F2BCD /* PoppingBaseView.m */,
+				12C6E3602006078D005F2BCD /* UIView+ITTAdditions.h */,
+				12C6E3612006078D005F2BCD /* UIView+ITTAdditions.m */,
+			);
+			path = ITTPromptView;
+			sourceTree = "<group>";
+		};
 		12FEE7A91FF4CD780005D58B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +265,7 @@
 				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
 				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
 				122870D91FFF1AF600F9DA46 /* HKTools.swift */,
+				1239AABD2005F12800ED20D5 /* UIImage+Category.swift */,
 				122870D71FFF151D00F9DA46 /* Date+Category.swift */,
 				128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */,
 			);
@@ -283,6 +338,7 @@
 			files = (
 				125ED8BF1FF32F4F0019043E /* art.scnassets in Resources */,
 				125ED8C91FF32F4F0019043E /* LaunchScreen.storyboard in Resources */,
+				12C6E3702006078E005F2BCD /* ITTPromptView.xib in Resources */,
 				128ADDAE1FF397630093F5C9 /* WeiboSDK.bundle in Resources */,
 				125ED8C61FF32F4F0019043E /* Assets.xcassets in Resources */,
 				125ED8C41FF32F4F0019043E /* Main.storyboard in Resources */,
@@ -344,10 +400,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C6E36E2006078E005F2BCD /* AMTumblrHud.m in Sources */,
 				12FF35DD1FFB739B00CAB502 /* HKPainter.swift in Sources */,
+				1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */,
+				12C6E36D2006078E005F2BCD /* LoadIngHUD.m in Sources */,
 				12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */,
 				122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */,
+				12C6E36C2006078E005F2BCD /* UIView+ITTAdditions.m in Sources */,
 				125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */,
+				12C6E36F2006078E005F2BCD /* ITTPromptView.m in Sources */,
+				12C6E3712006078E005F2BCD /* PoppingBaseView.m in Sources */,
 				1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */,
 				122870D81FFF151D00F9DA46 /* Date+Category.swift in Sources */,
 				125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */,

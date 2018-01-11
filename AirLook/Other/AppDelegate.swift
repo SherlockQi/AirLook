@@ -14,16 +14,13 @@ import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,WeiboSDKDelegate {
     
-    
-    
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        
+//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  
+
         WeiboSDK.registerApp("3161059495")
-        
         
         return true
     }
@@ -59,9 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WeiboSDKDelegate {
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         return WeiboSDK.handleOpen(url, delegate: self)
     }
-
     
-
 }
 
 

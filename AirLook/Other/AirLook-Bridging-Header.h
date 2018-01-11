@@ -4,4 +4,5 @@
 
 #import "WBHttpRequest.h"
 #import "WeiboSDK.h"
+#import "ITTPromptView.h"
 
