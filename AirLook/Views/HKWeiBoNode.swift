@@ -35,11 +35,13 @@ class HKWeiBoNode: SCNNode {
         didSet{
             self.painter.model = model
             self.painter.senceNode = self
-//            self.painter.drawImage(model: model!, weiboBox: self)
-            
-            
-            
-            
+            if let url = model?.user?.profile_image_url{
+                HKDownloader.loadImage(url: url, completion: { (ima) in
+                    DispatchQueue.main.async {
+                       self.painter.drawBegin(icon: ima)
+                    }
+                })
+            }
         }
     }
     
@@ -117,7 +119,7 @@ class HKWeiBoNode: SCNNode {
                         let box = SCNBox(width: self.MainSizeW, height: height * 2, length: self.MainSizeL, chamferRadius: self.MainRadius)
                         let nodeB = SCNNode(geometry: box)
                         self.retweeted_Node = nodeB
-                        let nodeB_Y =  -(boxNode.height)*0.5-0.2
+                        let nodeB_Y =  -(boxNode.height)*0.5-boxNode.height*0.5+0.05
                         nodeB.position = SCNVector3Make(0,Float(nodeB_Y), 0)
                         self.addChildNode(nodeB)
                         self.painter.drawRetweeted(image: ima)
@@ -143,9 +145,7 @@ class HKWeiBoNode: SCNNode {
     }
     func setUpMaterialImage(image:UIImage,node:SCNNode,color:UIColor){
         DispatchQueue.main.async {
-            
             let images = [image,color,color,color,color,color] as [Any]
-            
             var materials:[SCNMaterial] = []
             for index in 0..<6 {
                 let material = SCNMaterial()

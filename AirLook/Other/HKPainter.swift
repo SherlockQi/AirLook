@@ -15,7 +15,6 @@ class HKPainter: NSObject {
     var senceNode:HKWeiBoNode?
     var iconImage:UIImage?
     
-    
     let sizeW:CGFloat = 300
     let sizeH:CGFloat = 300*0.75
     let margin:CGFloat = 8
@@ -31,54 +30,8 @@ class HKPainter: NSObject {
     
     let zfColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1)
     
-    
-    func drawImage(model:HKWeiBoModel,weiboBox:HKWeiBoNode){
-        self.model = model
-        self.senceNode = weiboBox
-        self.loadIcon()
-    }
-    
-    func loadIcon(){
-        let url = URL(string: (model?.user?.profile_image_url!)!)!
-        let request = URLRequest(url: url)
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request, completionHandler: {
-            (data, response, error) -> Void in
-            if error != nil{
-                print(error.debugDescription)
-            }else{
-                let img = UIImage(data:data!)
-                self.iconImage = img
-                DispatchQueue.main.async {
-                    self.drawBegin(icon: img)
-                }
-            }
-        }) 
-        dataTask.resume()
-    }
-    
-    func loadImage(){
-        if let urlStr = model?.pic_urls?.first{
-            let url = URL(string: urlStr)!
-            let request = URLRequest(url: url)
-            let session = URLSession.shared
-            let dataTask = session.dataTask(with: request, completionHandler: {
-                (data, response, error) -> Void in
-                if error != nil{
-                    print(error.debugDescription)
-                }else{
-                    DispatchQueue.main.async {
-                        //                        self.drawBegin(icon: img)
-                        print(urlStr)
-                    }
-                }
-            })
-            dataTask.resume()
-        }
-    }
-    
     func drawBegin(icon:UIImage?){
-        
+        iconImage = icon
         let imageSize = CGSize(width: sizeW, height: sizeH)
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
         //获得 图形上下文
@@ -125,35 +78,31 @@ class HKPainter: NSObject {
         
         //转发
         if ((self.model?.retweeted_status) != nil)  {
-            let zfContext = UIGraphicsGetCurrentContext()
             let zfBackRect = CGRect(x: margin, y:textRect.maxY + margin, width: sizeW - 2*margin, height: sizeH - rect.maxY - 4 * margin)
-            zfContext?.addRect(zfBackRect)
-            
-            zfContext?.setFillColor(UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.1).cgColor)
-            zfContext?.fillPath()
+            context?.addRect(zfBackRect)
+            context?.setFillColor(UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.1).cgColor)
+            context?.fillPath()
             
             let zfTextcolor = UIColor.darkText
             let zfAttributes = [NSAttributedStringKey.foregroundColor: zfTextcolor, NSAttributedStringKey.font: zfFont]
             
             if let zfText = self.model?.retweeted_status?.text{
-                let zfRect:CGRect = zfText.boundingRect(with: CGSize(width: sizeW - 2 * margin, height: 50.0), options: option, attributes: timeAttributes, context: nil)
+                let zfRect:CGRect = zfText.boundingRect(with: CGSize(width: sizeW - 3 * margin, height: 900), options: option, attributes: timeAttributes, context: nil)
                 
-                let zfR = CGRect(x: zfBackRect.minX + 0.5 * margin, y: zfBackRect.minY + 0.5 * margin, width: zfRect.size.width, height: zfRect.size.height)
+                let zfR = CGRect(x: zfBackRect.minX + 0.5 * margin, y: zfBackRect.minY + 0.5 * margin, width: sizeW - 3 * margin, height: zfRect.size.height + 30)
+                
                 zfText.draw(with: zfR, options: sourceOption, attributes: zfAttributes, context: nil)
-                
                 //转发微博的高
                 retweete_H = zfR.maxY - textRect.maxY + 4 * margin
             }
         }else{
             //图片
-            loadImage()
         }
         
         let contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.senceNode?.contentImage = contentImage
     }
-    
     
     
     func drawOriginal(){
@@ -200,7 +149,6 @@ class HKPainter: NSObject {
         let textRect = CGRect(x: margin, y: iconRect.maxY + margin, width: rect.size.width, height: rect.size.height)
         text.draw(with: textRect, options: option, attributes: attributes, context: nil)
         //图片
-        loadImage()
         let contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.senceNode?.originalImage = contentImage
@@ -251,7 +199,6 @@ class HKPainter: NSObject {
         text.draw(with: textRect, options: option, attributes: attributes, context: nil)
         original_End = textRect.maxY + 4 * margin
         //图片
-        loadImage()
         let contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.senceNode?.retweetedImage = contentImage
