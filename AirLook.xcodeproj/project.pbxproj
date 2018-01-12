@@ -12,6 +12,7 @@
 		122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D91FFF1AF600F9DA46 /* HKTools.swift */; };
 		1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */; };
 		1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1239AABD2005F12800ED20D5 /* UIImage+Category.swift */; };
+		1259E2982008B17C00528519 /* HKDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259E2972008B17C00528519 /* HKDownloader.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
 		125ED8BF1FF32F4F0019043E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8BE1FF32F4F0019043E /* art.scnassets */; };
 		125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8C01FF32F4F0019043E /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		122870D91FFF1AF600F9DA46 /* HKTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTools.swift; sourceTree = "<group>"; };
 		1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoNode.swift; sourceTree = "<group>"; };
 		1239AABD2005F12800ED20D5 /* UIImage+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Category.swift"; sourceTree = "<group>"; };
+		1259E2972008B17C00528519 /* HKDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKDownloader.swift; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		125ED8BC1FF32F4F0019043E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		125ED8BE1FF32F4F0019043E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				12FF35D61FFB342000CAB502 /* HKMacro.swift */,
+				1259E2972008B17C00528519 /* HKDownloader.swift */,
 				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
 				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
 				122870D91FFF1AF600F9DA46 /* HKTools.swift */,
@@ -415,6 +418,7 @@
 				125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */,
 				121235B51FF4CC3100B9C853 /* HKNetwork.swift in Sources */,
 				12FF35D71FFB342000CAB502 /* HKMacro.swift in Sources */,
+				1259E2982008B17C00528519 /* HKDownloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

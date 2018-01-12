@@ -27,30 +27,39 @@ class HKWeiBoNode: SCNNode {
     var position_Original: SCNVector3?
     var rotation_Original: SCNVector4?
     var rotation_OriginalX:CGFloat?
+    var retweeted_Node:SCNNode?
     var index:Int?
     
     
     var model: HKWeiBoModel? {
         didSet{
-            self.painter.drawImage(model: model!, weiboBox: self)
+            self.painter.model = model
+            self.painter.senceNode = self
+//            self.painter.drawImage(model: model!, weiboBox: self)
+            
+            
+            
+            
         }
     }
     
     var contentImage:UIImage?{
         didSet{
-            setUpMaterialImage(image: contentImage!)
+            setUpMaterialImage(image: contentImage!, node: self,color: UIColor.white)
         }
     }
     //原创微博
     var originalImage:UIImage?{
         didSet{
-             setUpMaterialImage(image: originalImage!)
+            setUpMaterialImage(image: originalImage!, node: self,color: UIColor.white)
         }
     }
     //转发微博
     var retweetedImage:UIImage?{
         didSet{
-            setUpMaterialImage(image: retweetedImage!)
+            if retweetedImage != nil{
+                setUpMaterialImage(image: retweetedImage!, node: self.retweeted_Node!,color: self.painter.zfColor)
+            }
         }
     }
     
@@ -65,6 +74,7 @@ class HKWeiBoNode: SCNNode {
         self.rotation_OriginalX = CGFloat(-(line-2)*0.25)
         self.position_Original = self.position
         self.rotation_Original = self.rotation
+        
     }
     
     override init() {
@@ -75,6 +85,7 @@ class HKWeiBoNode: SCNNode {
     private func doInit() {
         let previewBox = SCNBox(width: MainSizeW, height: MainSizeH, length: MainSizeL, chamferRadius: MainRadius)
         self.setValue(0.78, forKey: "opacity")
+        previewBox.materials.first?.multiply.contents = UIColor.white
         self.geometry = previewBox
     }
     
@@ -93,10 +104,29 @@ class HKWeiBoNode: SCNNode {
         self.runAction(comeOnGroup)
         
         if let boxNode:SCNBox = self.geometry as? SCNBox{
-        boxNode.height = self.painter.original_End / self.painter.sizeH * self.MainSizeH
-        self.painter.drawOriginal()
+            //本人的 微博
+            boxNode.height = self.painter.original_End / self.painter.sizeH * self.MainSizeH
+            self.painter.drawOriginal()
+            //转发的 微博
+            
+            if let url = model?.retweeted_status?.user?.profile_image_url{
+                HKDownloader.loadImage(url: url, completion: { (ima) in
+                    print(ima)
+                    DispatchQueue.main.async {
+                        let height = self.painter.retweete_H / self.painter.sizeH * self.MainSizeH
+                        let box = SCNBox(width: self.MainSizeW, height: height * 2, length: self.MainSizeL, chamferRadius: self.MainRadius)
+                        let nodeB = SCNNode(geometry: box)
+                        self.retweeted_Node = nodeB
+                        let nodeB_Y =  -(boxNode.height)*0.5-0.2
+                        nodeB.position = SCNVector3Make(0,Float(nodeB_Y), 0)
+                        self.addChildNode(nodeB)
+                        self.painter.drawRetweeted(image: ima)
+                    }
+                })
+            }
         }
     }
+    
     func toSmall() {
         let goAwayMove = SCNAction.move(to: self.position_Original!, duration: 0.5)
         let goAwayOnFade = SCNAction.fadeOpacity(to: 0.78, duration: 0.5)
@@ -108,19 +138,21 @@ class HKWeiBoNode: SCNNode {
             boxNode.height = self.MainSizeH
             self.painter.drawOriginal()
         }
-        setUpMaterialImage(image: contentImage!)
+        self.retweeted_Node?.removeFromParentNode()
+        setUpMaterialImage(image: contentImage!, node: self,color:UIColor.white)
     }
-    
-    func setUpMaterialImage(image:UIImage){
+    func setUpMaterialImage(image:UIImage,node:SCNNode,color:UIColor){
         DispatchQueue.main.async {
-            let images = [image,UIColor.white,UIColor.white,UIColor.white,UIColor.white,UIColor.white] as [Any]
+            
+            let images = [image,color,color,color,color,color] as [Any]
+            
             var materials:[SCNMaterial] = []
             for index in 0..<6 {
                 let material = SCNMaterial()
                 material.diffuse.contents = images[index]
                 materials.append(material)
             }
-            self.geometry?.materials = materials
+            node.geometry?.materials = materials
         }  
     }
 }

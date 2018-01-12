@@ -20,6 +20,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var selectNode:HKWeiBoNode?
     let animDuration = 0.50
     let mainNode = SCNNode()
+    var weiboNodes:[SCNNode]?
+    
+    
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
     
     override func viewDidLoad() {
@@ -70,6 +73,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 extension ViewController{
     
     func addWeiBoSence(){
+        self.weiboNodes = []
         
         print(timeLineSource)
         let sp = SCNSphere(radius: 0.02)
@@ -87,9 +91,10 @@ extension ViewController{
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
             
+            self.weiboNodes?.append(weiBoNode)
             
             if timeLineSource.count > index {
-                 weiBoNode.model = timeLineSource[index]
+                weiBoNode.model = timeLineSource[index]
             }
         }
     }
@@ -146,9 +151,7 @@ extension ViewController{
     func loadWeiBo(token:String){
         let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
         let parameters:[String : Any] =  ["access_token":token,"count":25]
-        /**
-         2.00rJJL_CZyTv8Db55698d3c6wzY_EE
-         */
+
         Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
             print(response)
             print(response.description) //SUCCESS
@@ -189,18 +192,11 @@ extension ViewController{
         guard let firstNode  = results.first else{
             return
         }
-        
-        //        if !firstNode.isMember(of: HKWeiBoNode.self) {
-        //            return
-        //        }
-        //
-        //        if !firstNode.isKind(of: HKWeiBoNode.self) {
-        //            return
-        //        }
-        
-        
         // 点击到的节点
         let node = firstNode.node
+        if !(self.weiboNodes?.contains(node))!{
+            return
+        }
         
         if firstNode.node == self.selectNode {
             self.toSmall(node: node as? HKWeiBoNode)
@@ -213,24 +209,7 @@ extension ViewController{
     func toBig(node:HKWeiBoNode) {
         node.toBig()
         selectNode = node
-        
-        let shape = SCNPhysicsShape(geometry: node.geometry!, options: nil)
-        node.physicsBody = SCNPhysicsBody(type: .kinematic, shape: shape)
-
-        
-        let box = SCNBox(width: 0.5, height: 0.5, length: 0.5, chamferRadius: 0)
-        let nodeB = SCNNode(geometry: box)
-        let boxShape = SCNPhysicsShape(geometry: node.geometry!, options: nil)
-        
-        nodeB.physicsBody = SCNPhysicsBody(type: .dynamic, shape: boxShape)
-        let joint = SCNPhysicsHingeJoint(bodyA: node.physicsBody!,axisA: SCNVector3Make(1, 0, 0), anchorA: SCNVector3Make(0, 0, 0), bodyB: nodeB.physicsBody!, axisB: SCNVector3Make(1, 0, 0), anchorB: SCNVector3Make(0.5, 1, 0))
-      
-        mainNode.addChildNode(nodeB)
-
-        self.sceneView.scene.physicsWorld.addBehavior(joint)
-        
     }
-    
     func toSmall(node:HKWeiBoNode?) {
         if node != nil{
             node?.toSmall()
