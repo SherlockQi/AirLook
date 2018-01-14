@@ -68,7 +68,7 @@ class HKPainter: NSObject {
         source.draw(with: sourceRect, options: sourceOption, attributes: sourceAttributes, context: nil)
         //文字
         let color = UIColor.darkText
-        let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font,NSAttributedStringKey.backgroundColor: UIColor.red]
+        let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font]
         context?.setFillColor(UIColor.red.cgColor)
         let text = self.model?.text ?? ""
         let rect:CGRect = text.boundingRect(with: CGSize(width: sizeW - 2*margin, height: sizeH), options: option, attributes: attributes, context: nil)
