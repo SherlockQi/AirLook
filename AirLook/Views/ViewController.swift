@@ -28,8 +28,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let nextButton = UIButton(frame: CGRect(x: view.bounds.size.width - 50, y: view.bounds.size.height - 50, width: 50, height: 50))
+        nextButton.backgroundColor = UIColor.red
+        nextButton.setImage(UIImage(named: "loadMore"), for: .normal)
+        view.addSubview(nextButton)
 
-        
         UIApplication.shared.statusBarStyle = .lightContent
         sceneView.delegate = self
         sceneView.showsStatistics = true
