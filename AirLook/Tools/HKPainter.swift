@@ -68,13 +68,13 @@ class HKPainter: NSObject {
         source.draw(with: sourceRect, options: sourceOption, attributes: sourceAttributes, context: nil)
         //文字
         let color = UIColor.darkText
-        let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font]
+        let attributes = [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: font,NSAttributedStringKey.backgroundColor: UIColor.red]
         context?.setFillColor(UIColor.red.cgColor)
         let text = self.model?.text ?? ""
         let rect:CGRect = text.boundingRect(with: CGSize(width: sizeW - 2*margin, height: sizeH), options: option, attributes: attributes, context: nil)
         let textRect = CGRect(x: margin, y: iconRect.maxY + margin, width: rect.size.width, height: rect.size.height)
         text.draw(with: textRect, options: option, attributes: attributes, context: nil)
-        original_End = textRect.maxY + 4 * margin
+        original_End = textRect.maxY + 2 * margin
         
         //转发
         if ((self.model?.retweeted_status) != nil)  {
@@ -93,7 +93,9 @@ class HKPainter: NSObject {
                 
                 zfText.draw(with: zfR, options: sourceOption, attributes: zfAttributes, context: nil)
                 //转发微博的高
-                retweete_H = zfR.maxY - textRect.maxY + 4 * margin
+                let rRect = zfText.boundingRect(with: CGSize(width: sizeW - 2*margin, height: sizeH), options: option, attributes: attributes, context: nil)
+                retweete_H = rRect.maxY + iconRect.maxY + margin
+                
             }
         }else{
             //图片
@@ -156,7 +158,7 @@ class HKPainter: NSObject {
     
     func drawRetweeted(image:UIImage){
 
-        let imageSize = CGSize(width: sizeW, height: retweete_H*2)
+        let imageSize = CGSize(width: sizeW, height: retweete_H + 2 * margin)
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
         //获得 图形上下文
         let context = UIGraphicsGetCurrentContext()
@@ -197,7 +199,7 @@ class HKPainter: NSObject {
         let rect:CGRect = text.boundingRect(with: CGSize(width: sizeW - 2*margin, height: sizeH), options: option, attributes: attributes, context: nil)
         let textRect = CGRect(x: margin, y: iconRect.maxY + margin, width: rect.size.width, height: rect.size.height)
         text.draw(with: textRect, options: option, attributes: attributes, context: nil)
-        original_End = textRect.maxY + 4 * margin
+        
         //图片
         let contentImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

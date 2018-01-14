@@ -143,6 +143,23 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		1259E299200AEF5E00528519 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1259E2972008B17C00528519 /* HKDownloader.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1259E29A200AF13400528519 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				122870D91FFF1AF600F9DA46 /* HKTools.swift */,
+				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		125ED8B01FF32F4F0019043E = {
 			isa = PBXGroup;
 			children = (
@@ -164,8 +181,10 @@
 		125ED8BB1FF32F4F0019043E /* AirLook */ = {
 			isa = PBXGroup;
 			children = (
-				12C6E35F20060777005F2BCD /* 3DParty */,
 				12FF35DE1FFB7C2E00CAB502 /* Other */,
+				1259E29A200AF13400528519 /* Tools */,
+				12C6E35F20060777005F2BCD /* 3DParty */,
+				1259E299200AEF5E00528519 /* Network */,
 				12FEE7AA1FF4CD840005D58B /* Models */,
 				12FEE7A91FF4CD780005D58B /* Views */,
 				121235B61FF4CC7A00B9C853 /* Resource */,
@@ -264,10 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				12FF35D61FFB342000CAB502 /* HKMacro.swift */,
-				1259E2972008B17C00528519 /* HKDownloader.swift */,
-				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
 				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
-				122870D91FFF1AF600F9DA46 /* HKTools.swift */,
 				1239AABD2005F12800ED20D5 /* UIImage+Category.swift */,
 				122870D71FFF151D00F9DA46 /* Date+Category.swift */,
 				128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */,

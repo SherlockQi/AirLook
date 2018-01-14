@@ -115,11 +115,13 @@ class HKWeiBoNode: SCNNode {
                 HKDownloader.loadImage(url: url, completion: { (ima) in
                     print(ima)
                     DispatchQueue.main.async {
-                        let height = self.painter.retweete_H / self.painter.sizeH * self.MainSizeH
-                        let box = SCNBox(width: self.MainSizeW, height: height * 2, length: self.MainSizeL, chamferRadius: self.MainRadius)
+                        let height = self.painter.retweete_H / self.painter.sizeH * self.MainSizeH + 0.1
+                        let box = SCNBox(width: self.MainSizeW, height: height , length: self.MainSizeL, chamferRadius: self.MainRadius)
                         let nodeB = SCNNode(geometry: box)
                         self.retweeted_Node = nodeB
-                        let nodeB_Y =  -(boxNode.height)*0.5-boxNode.height*0.5+0.05
+                        let a = boxNode.height*0.5
+                        let b = height*0.5
+                        let nodeB_Y =  -a-b-0.05
                         nodeB.position = SCNVector3Make(0,Float(nodeB_Y), 0)
                         self.addChildNode(nodeB)
                         self.painter.drawRetweeted(image: ima)

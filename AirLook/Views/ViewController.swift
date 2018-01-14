@@ -39,8 +39,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle(gesture:)))
         sceneView.addGestureRecognizer(tap)
         //MARK:拖拽事件
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panHandle(gesture:)))
-        sceneView.addGestureRecognizer(pan)
+//        let pan = UIPanGestureRecognizer(target: self, action: #selector(panHandle(gesture:)))
+//        sceneView.addGestureRecognizer(pan)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onRecviceSINA_CODE_Notification(notification:)), name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil)
         
