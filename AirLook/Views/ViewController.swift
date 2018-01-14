@@ -32,7 +32,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         nextButton.backgroundColor = UIColor.red
         nextButton.setImage(UIImage(named: "loadMore"), for: .normal)
         view.addSubview(nextButton)
-
+        
         UIApplication.shared.statusBarStyle = .lightContent
         sceneView.delegate = self
         sceneView.showsStatistics = true
@@ -156,7 +156,7 @@ extension ViewController{
     func loadWeiBo(token:String){
         let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
         let parameters:[String : Any] =  ["access_token":token,"count":25]
-
+        
         Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
             print(response)
             print(response.description) //SUCCESS
@@ -199,16 +199,36 @@ extension ViewController{
         }
         // 点击到的节点
         let node = firstNode.node
-        if !(self.weiboNodes?.contains(node))!{
-            return
-        }
         
-        if firstNode.node == self.selectNode {
-            self.toSmall(node: node as? HKWeiBoNode)
+        //没有点到选中或者转发
+                if !(self.weiboNodes?.contains(node))!{
+        //
+        //
+        //            for cNode in self.weiboNodes! {
+        //
+        //
+        //
+        //            }
+        //
+                    return
+                }
+    
+        //既不是 选中 也不是 选中的转发
+        
+        //是选中或者转发
+        
+        if firstNode.node == self.selectNode{
+            self.toSmall(node:self.selectNode)
         }else{
-            self.toSmall(node:selectNode)
-            self.toBig(node: (node as? HKWeiBoNode)!)
-            //MARK:拖拽事件
+//            if self.selectNode != nil{
+//                if self.selectNode!.child_Nodes.contains(firstNode.node){
+//                     self.toSmall(node:selectNode)
+//                }
+//            }else{
+                self.toSmall(node:selectNode)
+                self.toBig(node: (node as? HKWeiBoNode)!)
+//            }
+
         }
     }
     func toBig(node:HKWeiBoNode) {

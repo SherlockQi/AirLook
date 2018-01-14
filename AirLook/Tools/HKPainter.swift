@@ -94,8 +94,7 @@ class HKPainter: NSObject {
                 zfText.draw(with: zfR, options: sourceOption, attributes: zfAttributes, context: nil)
                 //转发微博的高
                 let rRect = zfText.boundingRect(with: CGSize(width: sizeW - 2*margin, height: sizeH), options: option, attributes: attributes, context: nil)
-                retweete_H = rRect.maxY + iconRect.maxY + margin
-                
+                retweete_H = rRect.maxY + iconRect.maxY + 4 * margin
             }
         }else{
             //图片

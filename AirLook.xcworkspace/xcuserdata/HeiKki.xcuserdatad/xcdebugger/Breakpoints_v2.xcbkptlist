@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AirLook/Tools/HKPainter.swift"
-            timestampString = "537602698.359216"
+            filePath = "AirLook/Views/ViewController.swift"
+            timestampString = "537628349.909304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "drawBegin(icon:)"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "tapHandle(gesture:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

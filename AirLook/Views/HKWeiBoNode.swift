@@ -30,6 +30,9 @@ class HKWeiBoNode: SCNNode {
     var retweeted_Node:SCNNode?
     var index:Int?
     
+    var child_Nodes:[SCNNode] = []
+    
+    
     
     var model: HKWeiBoModel? {
         didSet{
@@ -38,7 +41,7 @@ class HKWeiBoNode: SCNNode {
             if let url = model?.user?.profile_image_url{
                 HKDownloader.loadImage(url: url, completion: { (ima) in
                     DispatchQueue.main.async {
-                       self.painter.drawBegin(icon: ima)
+                        self.painter.drawBegin(icon: ima)
                     }
                 })
             }
@@ -69,7 +72,7 @@ class HKWeiBoNode: SCNNode {
         self.init()
         self.index = index
         let line:Float = Float(index%maxLine)
-        let y:Float = nodeAreaH * 2 - (line * nodeAreaH)
+        let y:Float = nodeAreaH * 1.5 - (line * nodeAreaH)
         let z:Float = -2 + fabsf((2 - line)*0.1)
         self.position = SCNVector3Make(0,y,z)
         self.rotation = SCNVector4Make(1, 0, 0, -(line-2)*0.25)
@@ -119,12 +122,15 @@ class HKWeiBoNode: SCNNode {
                         let box = SCNBox(width: self.MainSizeW, height: height , length: self.MainSizeL, chamferRadius: self.MainRadius)
                         let nodeB = SCNNode(geometry: box)
                         self.retweeted_Node = nodeB
+                        self.child_Nodes.append(self.retweeted_Node!)
                         let a = boxNode.height*0.5
                         let b = height*0.5
                         let nodeB_Y =  -a-b-0.05
                         nodeB.position = SCNVector3Make(0,Float(nodeB_Y), 0)
                         self.addChildNode(nodeB)
                         self.painter.drawRetweeted(image: ima)
+                        //添加
+                        
                     }
                 })
             }
@@ -142,7 +148,12 @@ class HKWeiBoNode: SCNNode {
             boxNode.height = self.MainSizeH
             self.painter.drawOriginal()
         }
-        self.retweeted_Node?.removeFromParentNode()
+        for node in self.childNodes {
+            node.removeFromParentNode()
+        }
+        //添加
+        self.child_Nodes.removeAll()
+        
         setUpMaterialImage(image: contentImage!, node: self,color:UIColor.white)
     }
     func setUpMaterialImage(image:UIImage,node:SCNNode,color:UIColor){
