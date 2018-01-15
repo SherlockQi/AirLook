@@ -185,18 +185,23 @@ extension ViewController{
         
         
         Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
-            print(response)
-            print(response.description) //SUCCESS
-            let d = JSON(response)
-            print(d["request"])
-            let a = response.description
-            print(a)
-            if a.contains("error_code"){
-                print(a)
+   
+            /**
+             SUCCESS: {
+             error = "User requests out of rate limit!";
+             "error_code" = 10023;
+             request = "/2/statuses/home_timeline.json";
+             }
+             
+             */
+            
+            if response.description.contains("\"error_code\" = 10023;") || response.description.contains("User requests out of rate limit") {
+                print("responseString")
+                
+//                ITTPromptView.showMessage("-------", andFrameY: 0)
+                
             }
-            if let e = JSON(response)["SUCCESS"].array{
-                print(e)
-            }
+            
             
             switch response.result {
             case .success(let value):
