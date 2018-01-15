@@ -11,6 +11,7 @@
 		122870D81FFF151D00F9DA46 /* Date+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D71FFF151D00F9DA46 /* Date+Category.swift */; };
 		122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D91FFF1AF600F9DA46 /* HKTools.swift */; };
 		1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */; };
+		1230F85D200C6D280094905A /* HKLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230F85C200C6D280094905A /* HKLoadingButton.swift */; };
 		1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1239AABD2005F12800ED20D5 /* UIImage+Category.swift */; };
 		1259E2982008B17C00528519 /* HKDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259E2972008B17C00528519 /* HKDownloader.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		122870D71FFF151D00F9DA46 /* Date+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Category.swift"; sourceTree = "<group>"; };
 		122870D91FFF1AF600F9DA46 /* HKTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTools.swift; sourceTree = "<group>"; };
 		1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoNode.swift; sourceTree = "<group>"; };
+		1230F85C200C6D280094905A /* HKLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKLoadingButton.swift; sourceTree = "<group>"; };
 		1239AABD2005F12800ED20D5 /* UIImage+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Category.swift"; sourceTree = "<group>"; };
 		1259E2972008B17C00528519 /* HKDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKDownloader.swift; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +266,7 @@
 		12FEE7A91FF4CD780005D58B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1230F85C200C6D280094905A /* HKLoadingButton.swift */,
 				1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */,
 				125ED8C01FF32F4F0019043E /* ViewController.swift */,
 			);
@@ -427,6 +430,7 @@
 				122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */,
 				12C6E36C2006078E005F2BCD /* UIView+ITTAdditions.m in Sources */,
 				125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */,
+				1230F85D200C6D280094905A /* HKLoadingButton.swift in Sources */,
 				12C6E36F2006078E005F2BCD /* ITTPromptView.m in Sources */,
 				12C6E3712006078E005F2BCD /* PoppingBaseView.m in Sources */,
 				1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */,

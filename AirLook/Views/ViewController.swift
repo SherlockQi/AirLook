@@ -21,41 +21,63 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let animDuration = 0.50
     let mainNode = SCNNode()
     var weiboNodes:[SCNNode]?
+    var loadButton :HKLoadingButton?
     
+    var page:NSInteger = 0
     
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nextButton = UIButton(frame: CGRect(x: view.bounds.size.width - 50, y: view.bounds.size.height - 50, width: 50, height: 50))
-        nextButton.backgroundColor = UIColor.red
-        nextButton.setImage(UIImage(named: "loadMore"), for: .normal)
-        view.addSubview(nextButton)
-        
         UIApplication.shared.statusBarStyle = .lightContent
-        sceneView.delegate = self
-        sceneView.showsStatistics = true
-        let scene = SCNScene()
-        sceneView.scene = scene
-        
-        sceneView.antialiasingMode = SCNAntialiasingMode.multisampling4X
-        //MARK:点击事件
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle(gesture:)))
-        sceneView.addGestureRecognizer(tap)
-        //MARK:拖拽事件
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panHandle(gesture:)))
-        sceneView.addGestureRecognizer(pan)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onRecviceSINA_CODE_Notification(notification:)), name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil)
-        
+        self.setSceneView()
+        self.addGestureRecognizer()
+        self.addLoadButton()
+        self.weiboNodes = []
         if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
             loadWeiBo(token:token as! String)
         }else{
             loginWeiBo()
         }
+        
     }
-    
+    func setSceneView() {
+        sceneView.delegate = self
+        sceneView.showsStatistics = true
+        let scene = SCNScene()
+        sceneView.scene = scene
+        sceneView.antialiasingMode = SCNAntialiasingMode.multisampling4X
+    }
+    func addLoadButton(){
+        let nextButton = HKLoadingButton(frame: CGRect(x: view.bounds.size.width - 80, y: view.bounds.size.height - 80, width: 50, height: 50))
+        loadButton = nextButton
+        nextButton.backgroundColor = UIColor(red: 60/255.0, green: 180/255.0, blue: 244/255.0, alpha: 0.5)
+        nextButton.setImage(UIImage(named: "loadMore"), for: .normal)
+        nextButton.setImage(UIImage(named: "nil"), for: .selected)
+        nextButton.layer.cornerRadius = 25
+        nextButton.layer.masksToBounds = true
+        nextButton.addTarget(self, action: #selector(loadMoreButtonDidClick(sender:)), for: .touchUpInside)
+        view.addSubview(nextButton)
+    }
+    func addGestureRecognizer(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle(gesture:)))
+        sceneView.addGestureRecognizer(tap)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panHandle(gesture:)))
+        sceneView.addGestureRecognizer(pan)
+    }
+    func addNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(onRecviceSINA_CODE_Notification(notification:)), name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil)
+    }
+    @objc func loadMoreButtonDidClick(sender:UIButton){
+        sender.isSelected = !sender.isSelected
+        sender.setNeedsDisplay()
+        
+        if sender.isSelected {
+            let token:String = UserDefaults.standard.object(forKey: KEY_ACCESS_TOKEN) as! String
+            loadWeiBo(token: token)
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
@@ -78,7 +100,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 extension ViewController{
     
     func addWeiBoSence(){
-        self.weiboNodes = []
+        
+        for wNode in self.weiboNodes! {
+            wNode.removeFromParentNode()
+        }
         
         print(timeLineSource)
         let sp = SCNSphere(radius: 0.02)
@@ -155,7 +180,9 @@ extension ViewController{
     }
     func loadWeiBo(token:String){
         let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
-        let parameters:[String : Any] =  ["access_token":token,"count":25]
+        
+        let parameters:[String : Any] =  ["access_token":token,"count":25,"page":page]
+        
         
         Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
             print(response)
@@ -164,13 +191,17 @@ extension ViewController{
             print(d["request"])
             let a = response.description
             print(a)
-            
+            if a.contains("error_code"){
+                print(a)
+            }
             if let e = JSON(response)["SUCCESS"].array{
                 print(e)
             }
             
             switch response.result {
             case .success(let value):
+                
+                self.timeLineSource.removeAll()
                 if let timeJsonArr:[JSON] = JSON(value)["statuses"].array{
                     for index in 0..<timeJsonArr.count {
                         if let dic = timeJsonArr[index].dictionary{
@@ -180,7 +211,9 @@ extension ViewController{
                     }
                     DispatchQueue.main.async {
                         self.addWeiBoSence()
+                        self.loadButton?.isSelected = false
                     }
+                    self.page =  self.page + 1
                 }
             case .failure(let error):
                 print(error)
@@ -199,36 +232,20 @@ extension ViewController{
         }
         // 点击到的节点
         let node = firstNode.node
-        
-        //没有点到选中或者转发
-                if !(self.weiboNodes?.contains(node))!{
-        //
-        //
-        //            for cNode in self.weiboNodes! {
-        //
-        //
-        //
-        //            }
-        //
-                    return
-                }
-    
-        //既不是 选中 也不是 选中的转发
-        
-        //是选中或者转发
-        
         if firstNode.node == self.selectNode{
             self.toSmall(node:self.selectNode)
         }else{
-//            if self.selectNode != nil{
-//                if self.selectNode!.child_Nodes.contains(firstNode.node){
-//                     self.toSmall(node:selectNode)
-//                }
-//            }else{
+            if self.selectNode != nil{
+                if self.selectNode!.child_Nodes.contains(firstNode.node){
+                    self.toSmall(node:selectNode)
+                }else{
+                    self.toSmall(node:selectNode)
+                    self.toBig(node: (node as? HKWeiBoNode)!)
+                }
+            }else{
                 self.toSmall(node:selectNode)
                 self.toBig(node: (node as? HKWeiBoNode)!)
-//            }
-
+            }
         }
     }
     func toBig(node:HKWeiBoNode) {
