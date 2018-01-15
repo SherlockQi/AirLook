@@ -22,6 +22,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let mainNode = SCNNode()
     var weiboNodes:[SCNNode]?
     var loadButton :HKLoadingButton?
+    let tipView = HKTipView.tipView()
     
     var page:NSInteger = 0
     
@@ -34,14 +35,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.setSceneView()
         self.addGestureRecognizer()
         self.addLoadButton()
+        self.addNotification()
         self.weiboNodes = []
         if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
             loadWeiBo(token:token as! String)
         }else{
             loginWeiBo()
         }
-        
+        tipView.frame = CGRect(x: 10, y: 100, width:self.view.bounds.size.width - 20, height: 200)
     }
+    
+    
     func setSceneView() {
         sceneView.delegate = self
         sceneView.showsStatistics = true
@@ -74,8 +78,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sender.setNeedsDisplay()
         
         if sender.isSelected {
-            let token:String = UserDefaults.standard.object(forKey: KEY_ACCESS_TOKEN) as! String
-            loadWeiBo(token: token)
+            
+            if let token = UserDefaults.standard.object(forKey: KEY_ACCESS_TOKEN){
+                loadWeiBo(token: token as! String)
+            }
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -129,6 +135,7 @@ extension ViewController{
         }
     }
 }
+
 //MARK:登陆&获取信息
 extension ViewController{
     //登陆
@@ -180,28 +187,15 @@ extension ViewController{
     }
     func loadWeiBo(token:String){
         let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
-        
         let parameters:[String : Any] =  ["access_token":token,"count":25,"page":page]
-        
+        self.tipView.removeFromSuperview()
         
         Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
-   
-            /**
-             SUCCESS: {
-             error = "User requests out of rate limit!";
-             "error_code" = 10023;
-             request = "/2/statuses/home_timeline.json";
-             }
-             
-             */
             
             if response.description.contains("\"error_code\" = 10023;") || response.description.contains("User requests out of rate limit") {
-                print("responseString")
-                
-//                ITTPromptView.showMessage("-------", andFrameY: 0)
-                
+                self.view.addSubview(self.tipView)
+                self.loadButton?.isSelected = false
             }
-            
             
             switch response.result {
             case .success(let value):
@@ -268,10 +262,7 @@ extension ViewController{
 //MARK:节点拖动事件
 extension ViewController{
     @objc func panHandle(gesture:UIPanGestureRecognizer){
-        print(gesture)
         let point = gesture.translation(in: self.view)
-        print(point)
-        
         let  x = self.selectNode?.position.x ?? 0
         let  y = self.selectNode?.position.y ?? 0
         let  z = self.selectNode?.position.z ?? 0

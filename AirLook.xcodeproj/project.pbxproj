@@ -12,6 +12,8 @@
 		122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D91FFF1AF600F9DA46 /* HKTools.swift */; };
 		1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */; };
 		1230F85D200C6D280094905A /* HKLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230F85C200C6D280094905A /* HKLoadingButton.swift */; };
+		1230F865200C845F0094905A /* HKTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230F863200C845F0094905A /* HKTipView.swift */; };
+		1230F867200C85A00094905A /* HKTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1230F866200C85A00094905A /* HKTipView.xib */; };
 		1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1239AABD2005F12800ED20D5 /* UIImage+Category.swift */; };
 		1259E2982008B17C00528519 /* HKDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259E2972008B17C00528519 /* HKDownloader.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
@@ -52,6 +54,8 @@
 		122870D91FFF1AF600F9DA46 /* HKTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTools.swift; sourceTree = "<group>"; };
 		1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoNode.swift; sourceTree = "<group>"; };
 		1230F85C200C6D280094905A /* HKLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKLoadingButton.swift; sourceTree = "<group>"; };
+		1230F863200C845F0094905A /* HKTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTipView.swift; sourceTree = "<group>"; };
+		1230F866200C85A00094905A /* HKTipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HKTipView.xib; sourceTree = "<group>"; };
 		1239AABD2005F12800ED20D5 /* UIImage+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Category.swift"; sourceTree = "<group>"; };
 		1259E2972008B17C00528519 /* HKDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKDownloader.swift; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +263,8 @@
 				12C6E36A2006078D005F2BCD /* PoppingBaseView.m */,
 				12C6E3602006078D005F2BCD /* UIView+ITTAdditions.h */,
 				12C6E3612006078D005F2BCD /* UIView+ITTAdditions.m */,
+				1230F863200C845F0094905A /* HKTipView.swift */,
+				1230F866200C85A00094905A /* HKTipView.xib */,
 			);
 			path = ITTPromptView;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 				125ED8C91FF32F4F0019043E /* LaunchScreen.storyboard in Resources */,
 				12C6E3702006078E005F2BCD /* ITTPromptView.xib in Resources */,
 				128ADDAE1FF397630093F5C9 /* WeiboSDK.bundle in Resources */,
+				1230F867200C85A00094905A /* HKTipView.xib in Resources */,
 				125ED8C61FF32F4F0019043E /* Assets.xcassets in Resources */,
 				125ED8C41FF32F4F0019043E /* Main.storyboard in Resources */,
 			);
@@ -423,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12C6E36E2006078E005F2BCD /* AMTumblrHud.m in Sources */,
+				1230F865200C845F0094905A /* HKTipView.swift in Sources */,
 				12FF35DD1FFB739B00CAB502 /* HKPainter.swift in Sources */,
 				1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */,
 				12C6E36D2006078E005F2BCD /* LoadIngHUD.m in Sources */,
