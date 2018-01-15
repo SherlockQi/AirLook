@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WeiboSDKDelegate {
         WeiboSDK.registerApp("3161059495")
         return true
     }
-    
+
     //回调
     func didReceiveWeiboResponse(_ response: WBBaseResponse!) {
         if response.isKind(of: WBAuthorizeResponse.self){
@@ -45,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WeiboSDKDelegate {
     }
     
     //第二步  通过通知得到登录后获取的用户信息
-
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return WeiboSDK.handleOpen(url, delegate: self)
     }

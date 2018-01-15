@@ -43,6 +43,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             loginWeiBo()
         }
         tipView.frame = CGRect(x: 10, y: 100, width:self.view.bounds.size.width - 20, height: 200)
+    
     }
     
     
@@ -140,11 +141,22 @@ extension ViewController{
 extension ViewController{
     //登陆
     @objc func loginWeiBo(){
+       
+        /*
+         判断是否用客户端
+         true:安装了 启用 sso 认证
+         false:没有安装 启用 oauth 认证
+         **/
+        
+        if  WeiboSDK.isWeiboAppInstalled() {
         let request : WBAuthorizeRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         request.redirectURI = "https://github.com/SherlockQi"
         request.scope = "all"
         //        request.userInfo = ["SSO_Key":"SSO_Value"]
         WeiboSDK.send(request)
+        }else{
+            WeiboSDK.linkToTimeLine()
+        }
     }
     
     @objc func onRecviceSINA_CODE_Notification(notification:NSNotification)
