@@ -148,15 +148,12 @@ extension ViewController{
          false:没有安装 启用 oauth 认证
          **/
         
-        if  WeiboSDK.isWeiboAppInstalled() {
         let request : WBAuthorizeRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         request.redirectURI = "https://github.com/SherlockQi"
         request.scope = "all"
-        //        request.userInfo = ["SSO_Key":"SSO_Value"]
+        request.userInfo = ["SSO_Key":"SSO_Value"]
         WeiboSDK.send(request)
-        }else{
-            WeiboSDK.linkToTimeLine()
-        }
+
     }
     
     @objc func onRecviceSINA_CODE_Notification(notification:NSNotification)
