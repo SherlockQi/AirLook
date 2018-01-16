@@ -24,7 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var loadButton :HKLoadingButton?
     let tipView = HKTipView.tipView()
     
-    var page:NSInteger = 0
+    var page:NSInteger = 1
     
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
     
@@ -141,17 +141,14 @@ extension ViewController{
 extension ViewController{
     //登陆
     @objc func loginWeiBo(){
-       
-        /*
-         判断是否用客户端
-         true:安装了 启用 sso 认证
-         false:没有安装 启用 oauth 认证
-         **/
         
         let request : WBAuthorizeRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         request.redirectURI = "https://github.com/SherlockQi"
-        request.scope = "all"
-        request.userInfo = ["SSO_Key":"SSO_Value"]
+//        request.redirectURI = "https://api.weibo.com/oauth2/default.html"
+
+       
+        //        request.scope = "all"
+//        request.userInfo = ["SSO_Key":"SSO_Value"]
         WeiboSDK.send(request)
 
     }
@@ -208,7 +205,7 @@ extension ViewController{
             
             switch response.result {
             case .success(let value):
-                
+                print(value)
                 self.timeLineSource.removeAll()
                 if let timeJsonArr:[JSON] = JSON(value)["statuses"].array{
                     for index in 0..<timeJsonArr.count {
