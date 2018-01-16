@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
+//  HKDoorViewController.swift
 //  AirLook
 //
-//  Created by HeiKki on 2017/12/27.
-//  Copyright © 2017年 XiaQi. All rights reserved.
+//  Created by HeiKki on 2018/1/16.
+//  Copyright © 2018年 XiaQi. All rights reserved.
 //
 
 import UIKit
@@ -12,10 +12,9 @@ import ARKit
 import SwiftyJSON
 import Alamofire
 
-
-class ViewController: UIViewController, ARSCNViewDelegate {
+class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     
-    @IBOutlet var sceneView: ARSCNView!
+    var sceneView: ARSCNView!
     var weibo:[UIView]?
     var selectNode:HKWeiBoNode?
     let animDuration = 0.50
@@ -28,25 +27,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
     
+    override func loadView() {
+        super.loadView()
+        view = ARSCNView(frame: view.bounds)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         UIApplication.shared.statusBarStyle = .lightContent
+        view.backgroundColor = UIColor.black
+        sceneView = view as! ARSCNView
+        
         self.setSceneView()
         self.addGestureRecognizer()
         self.addLoadButton()
-        self.addNotification()
+        
         self.weiboNodes = []
         if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
             loadWeiBo(token:token as! String)
-        }else{
-            loginWeiBo()
         }
         tipView.frame = CGRect(x: 10, y: 100, width:self.view.bounds.size.width - 20, height: 200)
-    
     }
-    
-    
     func setSceneView() {
         sceneView.delegate = self
         sceneView.showsStatistics = true
@@ -59,7 +59,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         loadButton = nextButton
         nextButton.backgroundColor = UIColor(red: 60/255.0, green: 180/255.0, blue: 244/255.0, alpha: 0.5)
         nextButton.setImage(UIImage(named: "loadMore"), for: .normal)
-        nextButton.setImage(UIImage(named: "nil"), for: .selected)
         nextButton.layer.cornerRadius = 25
         nextButton.layer.masksToBounds = true
         nextButton.addTarget(self, action: #selector(loadMoreButtonDidClick(sender:)), for: .touchUpInside)
@@ -71,15 +70,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panHandle(gesture:)))
         sceneView.addGestureRecognizer(pan)
     }
-    func addNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(onRecviceSINA_CODE_Notification(notification:)), name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil)
-    }
+    
     @objc func loadMoreButtonDidClick(sender:UIButton){
         sender.isSelected = !sender.isSelected
         sender.setNeedsDisplay()
-        
         if sender.isSelected {
-            
             if let token = UserDefaults.standard.object(forKey: KEY_ACCESS_TOKEN){
                 loadWeiBo(token: token as! String)
             }
@@ -99,12 +94,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    deinit{
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 //MARK:节点组装
-extension ViewController{
+extension HKDoorViewController{
     
     func addWeiBoSence(){
         
@@ -138,71 +130,16 @@ extension ViewController{
 }
 
 //MARK:登陆&获取信息
-extension ViewController{
-    //登陆
-    @objc func loginWeiBo(){
-        
-        let request : WBAuthorizeRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
-        request.redirectURI = "https://github.com/SherlockQi"
-//        request.redirectURI = "https://api.weibo.com/oauth2/default.html"
-
-       
-        //        request.scope = "all"
-//        request.userInfo = ["SSO_Key":"SSO_Value"]
-        WeiboSDK.send(request)
-
-    }
-    
-    @objc func onRecviceSINA_CODE_Notification(notification:NSNotification)
-    {
-        //        SVProgressHUD.showSuccessWithStatus("获取到用户信息", duration: 1)
-        var userinfoDic : Dictionary = notification.userInfo!
-        
-        print("userInfo:\(userinfoDic)")
-        
-        /*
-         userInfo:[AnyHashable("refresh_token"): 2.00rJJL_CZyTv8D05b152f6567LZcJC,
-         AnyHashable("app"): {
-         logo = "http://timg.sjs.sinajs.cn/miniblog2style/images/developer/default_50.gif";
-         name = "\U672a\U901a\U8fc7\U5ba1\U6838\U5e94\U7528";
-         },
-         AnyHashable("access_token"): 2.00rJJL_CZyTv8D5fd60ecacaZ5OGrB,
-         AnyHashable("isRealName")  : true,
-         AnyHashable("remind_in")   : 157679999,
-         AnyHashable("scope")       : follow_app_official_microblog,
-         AnyHashable("uid")         : 2115672863,
-         AnyHashable("expires_in")  : 157679999]
-         */
-        let userAppInfo: Dictionary<String,String> = userinfoDic["app"] as! Dictionary
-        refeshUserInfo(dic: userAppInfo as NSDictionary)
-        
-        if let access_token = userinfoDic["access_token"]{
-            UserDefaults.standard.setValue(access_token, forKey: KEY_ACCESS_TOKEN)
-            loadWeiBo(token: access_token as! String)
-        }
-    }
-    //第三步 刷新用户界面
-    func refeshUserInfo(dic : NSDictionary){
-        let headimgurl: String = dic["logo"] as! String
-        let nickname: String = dic["name"] as! String
-        print(headimgurl)
-        print(nickname)
-        //        self.headerImg.sd_setImageWithURL(NSURL(string: headimgurl))
-        //        self.nicknameLbl.text = nickname
-        
-    }
+extension HKDoorViewController{
     func loadWeiBo(token:String){
         let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
         let parameters:[String : Any] =  ["access_token":token,"count":25,"page":page]
         self.tipView.removeFromSuperview()
-        
         Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
-            
             if response.description.contains("\"error_code\" = 10023;") || response.description.contains("User requests out of rate limit") {
                 self.view.addSubview(self.tipView)
                 self.loadButton?.isSelected = false
             }
-            
             switch response.result {
             case .success(let value):
                 print(value)
@@ -229,7 +166,7 @@ extension ViewController{
 
 
 //MARK:节点点击事件
-extension ViewController{
+extension HKDoorViewController{
     @objc func tapHandle(gesture:UITapGestureRecognizer){
         let results:[SCNHitTestResult] = (self.sceneView?.hitTest(gesture.location(ofTouch: 0, in: self.sceneView), options: nil))!
         guard let firstNode  = results.first else{
@@ -237,20 +174,29 @@ extension ViewController{
         }
         // 点击到的节点
         let node = firstNode.node
+        //点到转发微博
+        if self.selectNode != nil{
+            if self.selectNode!.retweeted_Node == firstNode.node{
+                self.toSmall(node:selectNode)
+                return
+            }
+        }
+        
+        
         if firstNode.node == self.selectNode{
             self.toSmall(node:self.selectNode)
         }else{
-            if self.selectNode != nil{
-                if self.selectNode!.child_Nodes.contains(firstNode.node){
-                    self.toSmall(node:selectNode)
-                }else{
-                    self.toSmall(node:selectNode)
-                    self.toBig(node: (node as? HKWeiBoNode)!)
-                }
-            }else{
+//            if self.selectNode != nil{
+//                if self.selectNode!.child_Nodes.contains(firstNode.node){
+//                    self.toSmall(node:selectNode)
+//                }else{
+//                    self.toSmall(node:selectNode)
+//                    self.toBig(node: (node as? HKWeiBoNode)!)
+//                }
+//            }else{
                 self.toSmall(node:selectNode)
                 self.toBig(node: (node as? HKWeiBoNode)!)
-            }
+//            }
         }
     }
     func toBig(node:HKWeiBoNode) {
@@ -266,7 +212,7 @@ extension ViewController{
 }
 
 //MARK:节点拖动事件
-extension ViewController{
+extension HKDoorViewController{
     @objc func panHandle(gesture:UIPanGestureRecognizer){
         let point = gesture.translation(in: self.view)
         let  x = self.selectNode?.position.x ?? 0

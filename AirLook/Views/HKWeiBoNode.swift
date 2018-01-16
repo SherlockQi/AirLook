@@ -30,7 +30,7 @@ class HKWeiBoNode: SCNNode {
     var retweeted_Node:SCNNode?
     var index:Int?
     
-    var child_Nodes:[SCNNode] = []
+//    var child_Nodes:[SCNNode] = []
     
     
     
@@ -122,7 +122,7 @@ class HKWeiBoNode: SCNNode {
                         let box = SCNBox(width: self.MainSizeW, height: height , length: self.MainSizeL, chamferRadius: self.MainRadius)
                         let nodeB = SCNNode(geometry: box)
                         self.retweeted_Node = nodeB
-                        self.child_Nodes.append(self.retweeted_Node!)
+//                        self.child_Nodes.append(self.retweeted_Node!)
                         let a = boxNode.height*0.5
                         let b = height*0.5
                         let nodeB_Y =  -a-b-0.05
@@ -152,7 +152,7 @@ class HKWeiBoNode: SCNNode {
             node.removeFromParentNode()
         }
         //添加
-        self.child_Nodes.removeAll()
+//        self.child_Nodes.removeAll()
         
         setUpMaterialImage(image: contentImage!, node: self,color:UIColor.white)
     }

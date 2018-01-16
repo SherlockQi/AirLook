@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		121235B51FF4CC3100B9C853 /* HKNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121235B41FF4CC3100B9C853 /* HKNetwork.swift */; };
 		122870D81FFF151D00F9DA46 /* Date+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D71FFF151D00F9DA46 /* Date+Category.swift */; };
 		122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122870D91FFF1AF600F9DA46 /* HKTools.swift */; };
 		1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */; };
@@ -22,6 +21,13 @@
 		125ED8C41FF32F4F0019043E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8C21FF32F4F0019043E /* Main.storyboard */; };
 		125ED8C61FF32F4F0019043E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8C51FF32F4F0019043E /* Assets.xcassets */; };
 		125ED8C91FF32F4F0019043E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8C71FF32F4F0019043E /* LaunchScreen.storyboard */; };
+		126395BC200DD6FC0028E69D /* HKDoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126395BB200DD6FC0028E69D /* HKDoorViewController.swift */; };
+		126395C7200DE50B0028E69D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126395BE200DE50B0028E69D /* Constants.swift */; };
+		126395C8200DE50B0028E69D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126395BF200DE50B0028E69D /* Localizable.strings */; };
+		126395C9200DE50B0028E69D /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126395C2200DE50B0028E69D /* Permissions.swift */; };
+		126395CA200DE50B0028E69D /* PermissionScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126395C3200DE50B0028E69D /* PermissionScope.swift */; };
+		126395CB200DE50B0028E69D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126395C4200DE50B0028E69D /* Extensions.swift */; };
+		126395CC200DE50B0028E69D /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126395C5200DE50B0028E69D /* Structs.swift */; };
 		128ADD841FF38EE50093F5C9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128ADD831FF38EDE0093F5C9 /* ImageIO.framework */; };
 		128ADD871FF38EFE0093F5C9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128ADD851FF38EEC0093F5C9 /* SystemConfiguration.framework */; };
 		128ADD881FF38F060093F5C9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128ADD861FF38EF20093F5C9 /* Security.framework */; };
@@ -49,7 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		121235B41FF4CC3100B9C853 /* HKNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKNetwork.swift; sourceTree = "<group>"; };
 		122870D71FFF151D00F9DA46 /* Date+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Category.swift"; sourceTree = "<group>"; };
 		122870D91FFF1AF600F9DA46 /* HKTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTools.swift; sourceTree = "<group>"; };
 		1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoNode.swift; sourceTree = "<group>"; };
@@ -66,6 +71,15 @@
 		125ED8C51FF32F4F0019043E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		125ED8C81FF32F4F0019043E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		125ED8CA1FF32F4F0019043E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		126395BB200DD6FC0028E69D /* HKDoorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKDoorViewController.swift; sourceTree = "<group>"; };
+		126395BE200DE50B0028E69D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		126395C0200DE50B0028E69D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		126395C1200DE50B0028E69D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		126395C2200DE50B0028E69D /* Permissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		126395C3200DE50B0028E69D /* PermissionScope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionScope.swift; sourceTree = "<group>"; };
+		126395C4200DE50B0028E69D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		126395C5200DE50B0028E69D /* Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		126395C6200DE50B0028E69D /* PermissionScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionScope.h; sourceTree = "<group>"; };
 		128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AirLook-Bridging-Header.h"; sourceTree = "<group>"; };
 		128ADD831FF38EDE0093F5C9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		128ADD851FF38EEC0093F5C9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -193,11 +207,35 @@
 				1259E299200AEF5E00528519 /* Network */,
 				12FEE7AA1FF4CD840005D58B /* Models */,
 				12FEE7A91FF4CD780005D58B /* Views */,
+				126395B9200DD6C70028E69D /* Controllers */,
 				121235B61FF4CC7A00B9C853 /* Resource */,
 				128ADD771FF389260093F5C9 /* weibo */,
 				125ED8CA1FF32F4F0019043E /* Info.plist */,
 			);
 			path = AirLook;
+			sourceTree = "<group>";
+		};
+		126395B9200DD6C70028E69D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				126395BB200DD6FC0028E69D /* HKDoorViewController.swift */,
+				125ED8C01FF32F4F0019043E /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		126395BD200DE50B0028E69D /* PermissionScope */ = {
+			isa = PBXGroup;
+			children = (
+				126395BE200DE50B0028E69D /* Constants.swift */,
+				126395BF200DE50B0028E69D /* Localizable.strings */,
+				126395C2200DE50B0028E69D /* Permissions.swift */,
+				126395C3200DE50B0028E69D /* PermissionScope.swift */,
+				126395C4200DE50B0028E69D /* Extensions.swift */,
+				126395C5200DE50B0028E69D /* Structs.swift */,
+				126395C6200DE50B0028E69D /* PermissionScope.h */,
+			);
+			path = PermissionScope;
 			sourceTree = "<group>";
 		};
 		128ADD771FF389260093F5C9 /* weibo */ = {
@@ -236,6 +274,7 @@
 		12C6E35F20060777005F2BCD /* 3DParty */ = {
 			isa = PBXGroup;
 			children = (
+				126395BD200DE50B0028E69D /* PermissionScope */,
 				12C6E372200607A2005F2BCD /* ITTPromptView */,
 			);
 			path = 3DParty;
@@ -274,7 +313,6 @@
 			children = (
 				1230F85C200C6D280094905A /* HKLoadingButton.swift */,
 				1230695B1FF61F2400E83DFA /* HKWeiBoNode.swift */,
-				125ED8C01FF32F4F0019043E /* ViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,7 +320,6 @@
 		12FEE7AA1FF4CD840005D58B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				121235B41FF4CC3100B9C853 /* HKNetwork.swift */,
 				12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */,
 			);
 			path = Models;
@@ -348,6 +385,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 125ED8B01FF32F4F0019043E;
 			productRefGroup = 125ED8BA1FF32F4F0019043E /* Products */;
@@ -369,6 +407,7 @@
 				12C6E3702006078E005F2BCD /* ITTPromptView.xib in Resources */,
 				128ADDAE1FF397630093F5C9 /* WeiboSDK.bundle in Resources */,
 				1230F867200C85A00094905A /* HKTipView.xib in Resources */,
+				126395C8200DE50B0028E69D /* Localizable.strings in Resources */,
 				125ED8C61FF32F4F0019043E /* Assets.xcassets in Resources */,
 				125ED8C41FF32F4F0019043E /* Main.storyboard in Resources */,
 			);
@@ -429,6 +468,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126395CC200DE50B0028E69D /* Structs.swift in Sources */,
+				126395CB200DE50B0028E69D /* Extensions.swift in Sources */,
 				12C6E36E2006078E005F2BCD /* AMTumblrHud.m in Sources */,
 				1230F865200C845F0094905A /* HKTipView.swift in Sources */,
 				12FF35DD1FFB739B00CAB502 /* HKPainter.swift in Sources */,
@@ -436,15 +477,18 @@
 				12C6E36D2006078E005F2BCD /* LoadIngHUD.m in Sources */,
 				12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */,
 				122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */,
+				126395C9200DE50B0028E69D /* Permissions.swift in Sources */,
 				12C6E36C2006078E005F2BCD /* UIView+ITTAdditions.m in Sources */,
 				125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */,
 				1230F85D200C6D280094905A /* HKLoadingButton.swift in Sources */,
+				126395CA200DE50B0028E69D /* PermissionScope.swift in Sources */,
 				12C6E36F2006078E005F2BCD /* ITTPromptView.m in Sources */,
 				12C6E3712006078E005F2BCD /* PoppingBaseView.m in Sources */,
 				1230695C1FF61F2400E83DFA /* HKWeiBoNode.swift in Sources */,
 				122870D81FFF151D00F9DA46 /* Date+Category.swift in Sources */,
+				126395BC200DD6FC0028E69D /* HKDoorViewController.swift in Sources */,
+				126395C7200DE50B0028E69D /* Constants.swift in Sources */,
 				125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */,
-				121235B51FF4CC3100B9C853 /* HKNetwork.swift in Sources */,
 				12FF35D71FFB342000CAB502 /* HKMacro.swift in Sources */,
 				1259E2982008B17C00528519 /* HKDownloader.swift in Sources */,
 			);
@@ -467,6 +511,15 @@
 				125ED8C81FF32F4F0019043E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		126395BF200DE50B0028E69D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				126395C0200DE50B0028E69D /* zh-Hans */,
+				126395C1200DE50B0028E69D /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
