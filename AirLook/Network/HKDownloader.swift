@@ -19,6 +19,12 @@ class HKDownloader: NSObject {
             if image != nil{
                 DispatchQueue.main.async {
                     completion(image!)
+
+                    #if DEBUG
+                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                        imageView.image = image
+                        UIApplication.shared.keyWindow?.addSubview(imageView)
+                    #endif
                 }
             }
         }

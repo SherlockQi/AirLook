@@ -55,11 +55,6 @@ extension ViewController{
     func refeshUserInfo(dic : NSDictionary){
         let headimgurl: String = dic["logo"] as! String
         let nickname: String = dic["name"] as! String
-//        HKDownloader.loadImage(url: headimgurl) { (img) in
-//            self.inButton.setBackgroundImage(img, for: .normal)
-//        }
-        
-        
         HKDownloader.readWithFile(imageName: headimgurl, completion: { (ima) in
             self.inButton.setBackgroundImage(ima, for: .normal)
         })

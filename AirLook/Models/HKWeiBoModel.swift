@@ -30,7 +30,6 @@ class HKWeiBoModel: NSObject {
     var bmiddle_pic:String?
     //配图图片(原)
     var original_pic:String?
-
     //时间
     var created_at:String?
     //被转发内容
@@ -40,14 +39,14 @@ class HKWeiBoModel: NSObject {
         let model = HKWeiBoModel()
         model.id = dic["id"]?.int
         model.text = dic["text"]?.string
-       
+        
         model.reposts_count = dic["reposts_count"]?.int
         model.comments_count = dic["comments_count"]?.int
         model.attitudes_count = dic["attitudes_count"]?.int
-        model.pic_urls = dic["pic_urls"]?.arrayObject as? [String]
+        //        model.pic_urls = dic["pic_urls"]?.arrayObject as? [String]
         model.bmiddle_pic = dic["bmiddle_pic"]?.string
         model.original_pic = dic["original_pic"]?.string
-
+        
         if let time = dic["created_at"]?.string{
             model.created_at  = HKTools.weiBoTime(time: time)
         }
@@ -62,15 +61,26 @@ class HKWeiBoModel: NSObject {
         
         if let retweeted_status =  dic["retweeted_status"]?.dictionary{
             let userModel = HKWeiBoModel.modelWithDic(dic: retweeted_status)
-                model.retweeted_status = userModel
+            model.retweeted_status = userModel
         }
-        print("---------")
-        print(model.pic_urls ?? "---------")
-        print(model.bmiddle_pic ?? "---------")
-        print(model.original_pic ?? "---------")
-
-        print("---------")
-
+        var pic_url_arrM:[String] = NSMutableArray() as! [String]
+        print(dic["pic_urls"] ?? "dic[dic[dic[dic[pic_urls] ] ")
+        if let pic_url_arr = dic["pic_urls"]?.arrayValue{
+            print(pic_url_arr)
+            for imageDic in pic_url_arr {
+                if let urlDic = imageDic.dictionary{
+                    print(urlDic["thumbnail_pic"] ?? "")
+                    if let imageStrJson = urlDic["thumbnail_pic"]{
+                        if let imageStr = imageStrJson.string{
+                            pic_url_arrM.append(imageStr)
+                          let largeImageUrl  = imageStr.replacingOccurrences(of: "thumbnail", with: "large")
+                            print(largeImageUrl)
+                        }
+                    }
+                }
+            }
+        }
+        model.pic_urls = pic_url_arrM
         return model
     }
     
@@ -79,6 +89,7 @@ class HKWeiBoModel: NSObject {
     }
     override func setValue(_ value: Any?, forKey key: String) {
         super.setValue(value, forKey: key)
+        
     }
 }
 
@@ -101,32 +112,5 @@ class HKUserModel: NSObject {
         model.profile_image_url = dic["profile_image_url"]?.string
         return model
     }
-    
 }
 
-
-
-
-
-
-/*** 图片
-
- "pic_urls" =                 (
- {
- "thumbnail_pic" = "http://wx2.sinaimg.cn/thumbnail/005Axneely1fna7xtrzwij30pv0fp75n.jpg";
- },
- {
- "thumbnail_pic" = "http://wx4.sinaimg.cn/thumbnail/005Axneely1fna7xh4pbnj30u01o0dxq.jpg";
- },
- {
- "thumbnail_pic" = "http://wx3.sinaimg.cn/thumbnail/005Axneely1fna7xsds41j30mi1907fn.jpg";
- }
- );
- http://wx3.sinaimg.cn/thumbnail/5809ec90ly1fnab6611hfj20vl0hsjty.jpg
- http://wx3.sinaimg.cn/large/5809ec90ly1fnab6611hfj20vl0hsjty.jpg
- http://wx3.sinaimg.cn/bmiddle/5809ec90ly1fnab6611hfj20vl0hsjty.jpg
- thumbnail_pic
- original_pic
- bmiddle_pic
- pic_urls
- */

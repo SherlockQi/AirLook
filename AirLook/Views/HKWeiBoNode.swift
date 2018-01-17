@@ -29,21 +29,26 @@ class HKWeiBoNode: SCNNode {
     var rotation_OriginalX:CGFloat?
     var retweeted_Node:SCNNode?
     var index:Int?
-
+    
     var model: HKWeiBoModel? {
         didSet{
             self.painter.model = model
             self.painter.senceNode = self
             if let url = model?.user?.profile_image_url{
-//                HKDownloader.loadImage(url: url, completion: { (ima) in
-//                    DispatchQueue.main.async {
-//                        self.painter.drawBegin(icon: ima)
-//                    }
-//                })
-                
                 HKDownloader.readWithFile(imageName: url, completion: { (ima) in
                     DispatchQueue.main.async {
                         self.painter.drawBegin(icon: ima)
+                    }
+                    //下载第一个图片
+                    if let largeImageUrl = self.model?.original_pic{
+                        DispatchQueue.global().async {
+//                            HKDownloader.loadImage(url: largeImageUrl)
+                            HKDownloader.readWithFile(imageName: largeImageUrl, completion: { (image) in
+                                let imageView = UIImageView(frame: CGRect(x: 0, y: 300, width: 200, height: 200))
+                                imageView.image = image
+                                UIApplication.shared.keyWindow?.addSubview(imageView)
+                            })
+                        }
                     }
                 })
             }
@@ -111,16 +116,18 @@ class HKWeiBoNode: SCNNode {
             //本人的 微博
             boxNode.height = self.painter.original_End / self.painter.sizeH * self.MainSizeH
             self.painter.drawOriginal()
+            //本人的图片
+            
+            print(model?.pic_urls)
+            
+     
+            
+            
+            
+            
             //转发的 微博
             if let url = model?.retweeted_status?.user?.profile_image_url{
-               
-                
                 HKDownloader.readWithFile(imageName: url, completion: { (ima) in
-//                    self.inButton.setBackgrimadImage(img, for: .normal)
-//                })
-//
-//                HKDownloader.loadImage(url: url, completion: { (ima) in
-                    print(ima)
                     DispatchQueue.main.async {
                         let height = self.painter.retweete_H / self.painter.sizeH * self.MainSizeH
                         let box = SCNBox(width: self.MainSizeW, height: height , length: self.MainSizeL, chamferRadius: self.MainRadius)
@@ -167,3 +174,28 @@ class HKWeiBoNode: SCNNode {
         }  
     }
 }
+
+
+
+/*** 图片
+ 
+ "pic_urls" =                 (
+ {
+ "thumbnail_pic" = "http://wx2.sinaimg.cn/thumbnail/005Axneely1fna7xtrzwij30pv0fp75n.jpg";
+ },
+ {
+ "thumbnail_pic" = "http://wx4.sinaimg.cn/thumbnail/005Axneely1fna7xh4pbnj30u01o0dxq.jpg";
+ },
+ {
+ "thumbnail_pic" = "http://wx3.sinaimg.cn/thumbnail/005Axneely1fna7xsds41j30mi1907fn.jpg";
+ }
+ );
+ http://wx3.sinaimg.cn/thumbnail/5809ec90ly1fnab6611hfj20vl0hsjty.jpg
+ http://wx3.sinaimg.cn/large/5809ec90ly1fnab6611hfj20vl0hsjty.jpg
+ http://wx3.sinaimg.cn/bmiddle/5809ec90ly1fnab6611hfj20vl0hsjty.jpg
+ thumbnail_pic
+ original_pic
+ bmiddle_pic
+ pic_urls
+ */
+
