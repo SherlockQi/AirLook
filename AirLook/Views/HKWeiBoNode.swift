@@ -29,17 +29,19 @@ class HKWeiBoNode: SCNNode {
     var rotation_OriginalX:CGFloat?
     var retweeted_Node:SCNNode?
     var index:Int?
-    
-//    var child_Nodes:[SCNNode] = []
-    
-    
-    
+
     var model: HKWeiBoModel? {
         didSet{
             self.painter.model = model
             self.painter.senceNode = self
             if let url = model?.user?.profile_image_url{
-                HKDownloader.loadImage(url: url, completion: { (ima) in
+//                HKDownloader.loadImage(url: url, completion: { (ima) in
+//                    DispatchQueue.main.async {
+//                        self.painter.drawBegin(icon: ima)
+//                    }
+//                })
+                
+                HKDownloader.readWithFile(imageName: url, completion: { (ima) in
                     DispatchQueue.main.async {
                         self.painter.drawBegin(icon: ima)
                     }
@@ -79,7 +81,6 @@ class HKWeiBoNode: SCNNode {
         self.rotation_OriginalX = CGFloat(-(line-2)*0.25)
         self.position_Original = self.position
         self.rotation_Original = self.rotation
-        
     }
     
     override init() {
@@ -98,8 +99,6 @@ class HKWeiBoNode: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     func toBig(){
         let newPosition  = SCNVector3Make(self.position.x/1.6, -0.1, -1.2)
         let comeOnMove = SCNAction.move(to: newPosition, duration: 0.5)
@@ -113,24 +112,26 @@ class HKWeiBoNode: SCNNode {
             boxNode.height = self.painter.original_End / self.painter.sizeH * self.MainSizeH
             self.painter.drawOriginal()
             //转发的 微博
-            
             if let url = model?.retweeted_status?.user?.profile_image_url{
-                HKDownloader.loadImage(url: url, completion: { (ima) in
+               
+                
+                HKDownloader.readWithFile(imageName: url, completion: { (ima) in
+//                    self.inButton.setBackgrimadImage(img, for: .normal)
+//                })
+//
+//                HKDownloader.loadImage(url: url, completion: { (ima) in
                     print(ima)
                     DispatchQueue.main.async {
                         let height = self.painter.retweete_H / self.painter.sizeH * self.MainSizeH
                         let box = SCNBox(width: self.MainSizeW, height: height , length: self.MainSizeL, chamferRadius: self.MainRadius)
                         let nodeB = SCNNode(geometry: box)
                         self.retweeted_Node = nodeB
-//                        self.child_Nodes.append(self.retweeted_Node!)
                         let a = boxNode.height*0.5
                         let b = height*0.5
                         let nodeB_Y =  -a-b-0.05
                         nodeB.position = SCNVector3Make(0,Float(nodeB_Y), 0)
                         self.addChildNode(nodeB)
                         self.painter.drawRetweeted(image: ima)
-                        //添加
-                        
                     }
                 })
             }
@@ -151,9 +152,6 @@ class HKWeiBoNode: SCNNode {
         for node in self.childNodes {
             node.removeFromParentNode()
         }
-        //添加
-//        self.child_Nodes.removeAll()
-        
         setUpMaterialImage(image: contentImage!, node: self,color:UIColor.white)
     }
     func setUpMaterialImage(image:UIImage,node:SCNNode,color:UIColor){

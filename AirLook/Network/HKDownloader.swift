@@ -7,28 +7,26 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class HKDownloader: NSObject {
-    //下载图片
-    class func loadImage(url:String,completion: @escaping (_ image : UIImage)->()) -> () {
-        let url = URL(string: url)
-        let request = URLRequest(url: url!)
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request, completionHandler: {
-            (data, response, error) -> Void in
-            if error != nil{
-                print(error.debugDescription)
-            }else{
-                if let img = UIImage(data:data!){
-                    DispatchQueue.main.async {
-                        completion(img)
-                    }
+    class func loadImage(url:String){
+        let manager = KingfisherManager.shared
+        manager.downloader.downloadImage(with: URL(string: url)!)
+    }
+    class func readWithFile(imageName:String,completion: @escaping (_ image : UIImage)->()) {
+        KingfisherManager.shared.downloader.downloadImage(with: URL(string: imageName)!, retrieveImageTask: nil, options: nil, progressBlock: nil) { (image, error, url, data) in
+            if image != nil{
+                DispatchQueue.main.async {
+                    completion(image!)
+
+                    #if DEBUG
+                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+                        imageView.image = image
+                        UIApplication.shared.keyWindow?.addSubview(imageView)
+                    #endif
                 }
             }
-        })
-        dataTask.resume()
+        }
     }
 }
-
-

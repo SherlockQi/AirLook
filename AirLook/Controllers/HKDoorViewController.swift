@@ -164,7 +164,6 @@ extension HKDoorViewController{
     }
 }
 
-
 //MARK:节点点击事件
 extension HKDoorViewController{
     @objc func tapHandle(gesture:UITapGestureRecognizer){
@@ -181,22 +180,11 @@ extension HKDoorViewController{
                 return
             }
         }
-        
-        
         if firstNode.node == self.selectNode{
             self.toSmall(node:self.selectNode)
         }else{
-//            if self.selectNode != nil{
-//                if self.selectNode!.child_Nodes.contains(firstNode.node){
-//                    self.toSmall(node:selectNode)
-//                }else{
-//                    self.toSmall(node:selectNode)
-//                    self.toBig(node: (node as? HKWeiBoNode)!)
-//                }
-//            }else{
-                self.toSmall(node:selectNode)
-                self.toBig(node: (node as? HKWeiBoNode)!)
-//            }
+            self.toSmall(node:selectNode)
+            self.toBig(node: (node as? HKWeiBoNode)!)
         }
     }
     func toBig(node:HKWeiBoNode) {
