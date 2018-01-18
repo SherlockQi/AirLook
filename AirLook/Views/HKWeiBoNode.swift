@@ -44,9 +44,9 @@ class HKWeiBoNode: SCNNode {
                         DispatchQueue.global().async {
 //                            HKDownloader.loadImage(url: largeImageUrl)
                             HKDownloader.readWithFile(imageName: largeImageUrl, completion: { (image) in
-                                let imageView = UIImageView(frame: CGRect(x: 0, y: 300, width: 200, height: 200))
-                                imageView.image = image
-                                UIApplication.shared.keyWindow?.addSubview(imageView)
+//                                let imageView = UIImageView(frame: CGRect(x: 0, y: 300, width: 200, height: 200))
+//                                imageView.image = image
+//                                UIApplication.shared.keyWindow?.addSubview(imageView)
                             })
                         }
                     }
