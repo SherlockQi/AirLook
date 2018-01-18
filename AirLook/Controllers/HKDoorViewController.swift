@@ -27,16 +27,13 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
     
-    override func loadView() {
-        super.loadView()
-        view = ARSCNView(frame: view.bounds)
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         view.backgroundColor = UIColor.black
-        sceneView = view as! ARSCNView
-        
+       sceneView = ARSCNView(frame: view.bounds)
+        view.addSubview(sceneView)
         self.setSceneView()
         self.addGestureRecognizer()
         self.addLoadButton()
@@ -68,7 +65,7 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     func addResetButton(){
         let resetButton = UIButton(frame: CGRect(x: view.bounds.size.width - 80, y: 0, width: 50, height: 50))
         resetButton.backgroundColor = UIColor(red: 60/255.0, green: 180/255.0, blue: 244/255.0, alpha: 0.5)
-        resetButton.setImage(UIImage(named: "loadMore"), for: .normal)
+        resetButton.setTitle("重置", for: .normal)
         resetButton.layer.cornerRadius = 25
         resetButton.layer.masksToBounds = true
         resetButton.addTarget(self, action: #selector(loadResetButtonDidClick(sender:)), for: .touchUpInside)
@@ -83,6 +80,12 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func loadResetButtonDidClick(sender:UIButton){
         print("loadResetButtonDidClick")
+        self.sceneView.removeFromSuperview()
+        sceneView = ARSCNView(frame: view.bounds)
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+        view.insertSubview(sceneView, at: 0)
+        self.addWeiBoSence()
     }
     @objc func loadMoreButtonDidClick(sender:UIButton){
         sender.isSelected = !sender.isSelected
@@ -112,12 +115,9 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
 extension HKDoorViewController{
     
     func addWeiBoSence(){
-        
         for wNode in self.weiboNodes! {
             wNode.removeFromParentNode()
         }
-        
-        print(timeLineSource)
         let sp = SCNSphere(radius: 0.02)
         mainNode.geometry = sp
         mainNode.position = SCNVector3Make(0, 0, 0.5)
@@ -132,9 +132,7 @@ extension HKDoorViewController{
             emptyNode.runAction(actionR)
             emptyNode.addChildNode(weiBoNode)
             mainNode.addChildNode(emptyNode)
-            
             self.weiboNodes?.append(weiBoNode)
-            
             if timeLineSource.count > index {
                 weiBoNode.model = timeLineSource[index]
             }

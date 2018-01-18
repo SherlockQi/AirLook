@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AirLook/Views/HKWeiBoNode.swift"
-            timestampString = "537888244.2217129"
+            timestampString = "537934304.501277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
             endingLineNumber = "121"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "toBig()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AirLook/Views/HKWeiBoNode.swift"
-            timestampString = "537888244.222088"
+            timestampString = "537934304.501345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "model"
+            landmarkType = "24">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -42,7 +42,7 @@
                   moduleName = "AirLook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Views/HKWeiBoNode.swift"
-                  timestampString = "537888244.489709"
+                  timestampString = "537933444.30003"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
@@ -57,7 +57,7 @@
                   moduleName = "AirLook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Views/HKWeiBoNode.swift"
-                  timestampString = "537888244.49172"
+                  timestampString = "537933444.302902"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AirLook/Views/HKWeiBoNode.swift"
-            timestampString = "537888340.716081"
+            timestampString = "537934304.5013911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "model"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
