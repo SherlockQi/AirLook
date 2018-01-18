@@ -40,6 +40,7 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         self.setSceneView()
         self.addGestureRecognizer()
         self.addLoadButton()
+        self.addResetButton()
         
         self.weiboNodes = []
         if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
@@ -64,6 +65,15 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         nextButton.addTarget(self, action: #selector(loadMoreButtonDidClick(sender:)), for: .touchUpInside)
         view.addSubview(nextButton)
     }
+    func addResetButton(){
+        let resetButton = UIButton(frame: CGRect(x: view.bounds.size.width - 80, y: 0, width: 50, height: 50))
+        resetButton.backgroundColor = UIColor(red: 60/255.0, green: 180/255.0, blue: 244/255.0, alpha: 0.5)
+        resetButton.setImage(UIImage(named: "loadMore"), for: .normal)
+        resetButton.layer.cornerRadius = 25
+        resetButton.layer.masksToBounds = true
+        resetButton.addTarget(self, action: #selector(loadResetButtonDidClick(sender:)), for: .touchUpInside)
+        view.addSubview(resetButton)
+    }
     func addGestureRecognizer(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle(gesture:)))
         sceneView.addGestureRecognizer(tap)
@@ -71,6 +81,9 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(pan)
     }
     
+    @objc func loadResetButtonDidClick(sender:UIButton){
+        print("loadResetButtonDidClick")
+    }
     @objc func loadMoreButtonDidClick(sender:UIButton){
         sender.isSelected = !sender.isSelected
         sender.setNeedsDisplay()
