@@ -86,6 +86,7 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration)
         view.insertSubview(sceneView, at: 0)
         self.addWeiBoSence()
+        self.addGestureRecognizer()
     }
     @objc func loadMoreButtonDidClick(sender:UIButton){
         sender.isSelected = !sender.isSelected

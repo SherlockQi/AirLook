@@ -26,6 +26,8 @@ class HKWeiBoModel: NSObject {
     var attitudes_count:Int?
     //配图图片
     var pic_urls:[String]?
+    //配图图片(原图)
+    var original_urls:[String]?
     //配图图片(中)
     var bmiddle_pic:String?
     //配图图片(原)
@@ -64,9 +66,10 @@ class HKWeiBoModel: NSObject {
             model.retweeted_status = userModel
         }
         var pic_url_arrM:[String] = NSMutableArray() as! [String]
-        print(dic["pic_urls"] ?? "dic[dic[dic[dic[pic_urls] ] ")
+        var original_pic_arrM:[String] = NSMutableArray() as! [String]
+
+        
         if let pic_url_arr = dic["pic_urls"]?.arrayValue{
-            print(pic_url_arr)
             for imageDic in pic_url_arr {
                 if let urlDic = imageDic.dictionary{
                     print(urlDic["thumbnail_pic"] ?? "")
@@ -75,12 +78,14 @@ class HKWeiBoModel: NSObject {
                             pic_url_arrM.append(imageStr)
                           let largeImageUrl  = imageStr.replacingOccurrences(of: "thumbnail", with: "large")
                             print(largeImageUrl)
+                            original_pic_arrM.append(largeImageUrl)
                         }
                     }
                 }
             }
         }
         model.pic_urls = pic_url_arrM
+        model.original_urls = original_pic_arrM
         return model
     }
     
