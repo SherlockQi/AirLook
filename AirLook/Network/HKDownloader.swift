@@ -21,9 +21,9 @@ class HKDownloader: NSObject {
                     completion(image!)
 
                     #if DEBUG
-                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                        imageView.image = image
-                        UIApplication.shared.keyWindow?.addSubview(imageView)
+//                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//                        imageView.image = image
+//                        UIApplication.shared.keyWindow?.addSubview(imageView)
                     #endif
                 }
             }

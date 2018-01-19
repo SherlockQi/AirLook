@@ -44,11 +44,11 @@ class HKWeiBoNode: SCNNode {
                         DispatchQueue.global().async {
                             HKDownloader.readWithFile(imageName: largeImageUrl, completion: { (image) in
                                 #if DEBUG
-                                    let imageView = UIImageView(frame: CGRect(x: 0, y: 200, width: 100, height: 100))
-                                    imageView.image = image
-                                    UIApplication.shared.keyWindow?.addSubview(imageView)
-                                    print(self.model?.text)
-                                    print(largeImageUrl)
+//                                    let imageView = UIImageView(frame: CGRect(x: 0, y: 200, width: 100, height: 100))
+//                                    imageView.image = image
+//                                    UIApplication.shared.keyWindow?.addSubview(imageView)
+//                                    print(self.model?.text)
+//                                    print(largeImageUrl)
 
                                 #endif
                             })
