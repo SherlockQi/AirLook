@@ -123,15 +123,35 @@ class HKWeiBoNode: SCNNode {
             //本人的图片
             
             
-            var nodeB_Y:CGFloat = 0
-            if let largeImageUrl = self.model?.original_urls?.first{
+//            var nodeB_Y:CGFloat = 0
+//            if let largeImageUrl = self.model?.original_urls?.first{
+//                let height:CGFloat = 0.3
+//                let box = SCNBox(width: self.MainSizeW, height: height , length: self.MainSizeL, chamferRadius: self.MainRadius)
+//                let nodeB = SCNNode(geometry: box)
+//                self.retweeted_Node = nodeB
+//                let a = boxNode.height*0.5
+//                let b = height*0.5
+//                nodeB_Y =  -a-b-0.05
+//                nodeB.position = SCNVector3Make(0,Float(nodeB_Y), 0)
+//                self.addChildNode(nodeB)
+//
+//
+//                HKDownloader.readWithFile(imageName: largeImageUrl, completion: { (image) in
+//                    DispatchQueue.main.async {
+//                        self.setUpMaterialImage(image: image, node: nodeB, color: UIColor.white)
+//                    }
+//                })
+//            }
+            
+                var image_H:CGFloat = 0;
+                let largeImageUrl = self.model?.original_urls?.first ?? "http://wx4.sinaimg.cn/thumbnail/67dd74e0gy1fnm0cq6ybeg20cs06enpe.gif"
                 let height:CGFloat = 0.3
                 let box = SCNBox(width: self.MainSizeW, height: height , length: self.MainSizeL, chamferRadius: self.MainRadius)
                 let nodeB = SCNNode(geometry: box)
                 self.retweeted_Node = nodeB
                 let a = boxNode.height*0.5
                 let b = height*0.5
-                nodeB_Y =  -a-b-0.05
+                let  nodeB_Y =  -a-b-0.05
                 nodeB.position = SCNVector3Make(0,Float(nodeB_Y), 0)
                 self.addChildNode(nodeB)
                 
@@ -141,7 +161,8 @@ class HKWeiBoNode: SCNNode {
                         self.setUpMaterialImage(image: image, node: nodeB, color: UIColor.white)
                     }
                 })
-            }
+            
+            image_H  = image_H + height + 0.05
             
             //转发的 微博
             if let url = model?.retweeted_status?.user?.profile_image_url{
@@ -153,7 +174,7 @@ class HKWeiBoNode: SCNNode {
                         self.retweeted_Node = nodeB
                         let a = boxNode.height*0.5
                         let b = height*0.5
-                        let reNodeB_Y =  -a-b-0.05 + nodeB_Y
+                        let reNodeB_Y =  -a-b-0.05 - image_H
                         nodeB.position = SCNVector3Make(0,Float(reNodeB_Y), 0)
                         self.addChildNode(nodeB)
                         self.painter.drawRetweeted(image: ima)
