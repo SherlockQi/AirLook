@@ -191,7 +191,12 @@ extension HKDoorViewController{
                 self.toSmall(node:selectNode)
                 return
             }
+            if self.selectNode!.childNodes.contains(firstNode.node){
+                self.toSmall(node:selectNode)
+                return
+            }
         }
+        
         if firstNode.node == self.selectNode{
             self.toSmall(node:self.selectNode)
         }else{

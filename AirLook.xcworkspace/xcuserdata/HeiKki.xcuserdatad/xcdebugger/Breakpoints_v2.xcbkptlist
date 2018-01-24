@@ -10,60 +10,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AirLook/Views/HKWeiBoNode.swift"
-            timestampString = "538045411.880898"
+            timestampString = "538479640.055908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AirLook.HKWeiBoNode.toBig() -&gt; ()"
-                  moduleName = "AirLook"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Views/HKWeiBoNode.swift"
-                  timestampString = "538044347.66962"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "1808">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (__ObjC.UIImage) -&gt; () in AirLook.HKWeiBoNode.toBig() -&gt; ()"
-                  moduleName = "AirLook"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Views/HKWeiBoNode.swift"
-                  timestampString = "538044347.671932"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #2 (__ObjC.UIImage) -&gt; () in AirLook.HKWeiBoNode.toBig() -&gt; ()"
-                  moduleName = "AirLook"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Views/HKWeiBoNode.swift"
-                  timestampString = "538044347.674546"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "addSelfImages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AirLook/Views/HKWeiBoNode.swift"
+            timestampString = "538479640.056337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "addSelfImages()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
