@@ -26,7 +26,6 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     var page:NSInteger = 1
     
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +37,6 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         self.addGestureRecognizer()
         self.addLoadButton()
         self.addResetButton()
-        
         self.weiboNodes = []
         if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
             loadWeiBo(token:token as! String)
@@ -53,21 +51,18 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         sceneView.antialiasingMode = SCNAntialiasingMode.multisampling4X
     }
     func addLoadButton(){
-        let nextButton = HKLoadingButton(frame: CGRect(x: view.bounds.size.width - 80, y: view.bounds.size.height - 80, width: 50, height: 50))
+        let nextButton = HKLoadingButton(frame: CGRect(x: view.bounds.size.width - 55, y: view.bounds.size.height - 55, width: 40, height: 40))
         loadButton = nextButton
         nextButton.backgroundColor = UIColor(red: 60/255.0, green: 180/255.0, blue: 244/255.0, alpha: 0.5)
         nextButton.setImage(UIImage(named: "loadMore"), for: .normal)
-        nextButton.layer.cornerRadius = 25
+        nextButton.layer.cornerRadius = nextButton.bounds.size.width * 0.5
         nextButton.layer.masksToBounds = true
         nextButton.addTarget(self, action: #selector(loadMoreButtonDidClick(sender:)), for: .touchUpInside)
         view.addSubview(nextButton)
     }
     func addResetButton(){
-        let resetButton = UIButton(frame: CGRect(x: view.bounds.size.width - 80, y: 0, width: 50, height: 50))
-        resetButton.backgroundColor = UIColor(red: 60/255.0, green: 180/255.0, blue: 244/255.0, alpha: 0.5)
-        resetButton.setTitle("重置", for: .normal)
-        resetButton.layer.cornerRadius = 25
-        resetButton.layer.masksToBounds = true
+        let resetButton = UIButton(frame: CGRect(x: view.bounds.size.width - 35, y: 20, width: 20, height: 20))
+        resetButton.setImage(#imageLiteral(resourceName: "reset"), for: .normal)
         resetButton.addTarget(self, action: #selector(loadResetButtonDidClick(sender:)), for: .touchUpInside)
         view.addSubview(resetButton)
     }

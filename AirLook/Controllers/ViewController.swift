@@ -64,7 +64,6 @@ extension ViewController{
 
 // 判断权限
 extension ViewController{
-    
     func permissions(){
         pscope.show(
             { finished, results in
@@ -75,7 +74,7 @@ extension ViewController{
                 case .denied: break//已悲剧
                 default:
                     let weiBoVC = HKDoorViewController()
-                    self.navigationController?.pushViewController(weiBoVC, animated: true)
+                    self.navigationController?.pushViewController(weiBoVC, animated: false)
                     break
                 }
         },
