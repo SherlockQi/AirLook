@@ -27,6 +27,20 @@ class ViewController: UIViewController {
     @IBAction func mainButtonDidClick(_ sender: UIButton) {
         loginWeiBo()
     }
+    @IBAction func supportButtonDidClick(_ sender: UIButton) {
+        toAppStore()
+    }
+    @IBAction func shareButtonDidClick(_ sender: UIButton) {
+        UMSocialUIManager.showShareMenuViewInWindow(platformSelectionBlock: { (type, dic) in
+            let messgaeObject = UMSocialMessageObject()
+
+            let shareObject = UMShareWebpageObject.shareObject(withTitle: "Air Look", descr: "试试用AR刷微博", thumImage: UIImage(named: "hudie_4"))
+            shareObject?.webpageUrl = "https://itunes.apple.com/cn/app/weare/id1325931978?mt=8"
+            messgaeObject.shareObject = shareObject
+            UMSocialManager.default().share(to: type, messageObject: messgaeObject, currentViewController: self, completion: { (data, error) in
+            })
+        })
+    }
     
     func addNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(onRecviceSINA_CODE_Notification(notification:)), name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil)
@@ -60,6 +74,26 @@ extension ViewController{
         })
         self.nickLabel.text = nickname
     }
+}
+extension ViewController{
+    
+func toAppStore(){
+    let alertController = UIAlertController(title: "去往 AppStore",
+                                            message: nil, preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "残忍拒绝", style: .cancel, handler: nil)
+    let okAction = UIAlertAction(title: "好的", style: .default,
+                                 handler: {
+                                    action in
+                                    self.gotoAppStore()
+    })
+    alertController.addAction(cancelAction)
+    alertController.addAction(okAction)
+    present(alertController, animated: true, completion: nil)
+}
+func gotoAppStore() {
+    let url = URL(string: "itms-apps://itunes.apple.com/cn/app/airlook/id1325931978?action=write-review")
+    UIApplication.shared.open(url!,options: [:], completionHandler: nil)
+}
 }
 
 // 判断权限

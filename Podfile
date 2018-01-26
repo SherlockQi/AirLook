@@ -8,5 +8,9 @@ target 'AirLook' do
   # Pods for AirLook
 pod 'SwiftyJSON'
 pod 'Alamofire'
-#pod 'Kingfisher'
+pod 'Kingfisher'
+
+#pod 'UMengUShare/UI'
+#pod 'UMengUShare/Social/ReducedWeChat'
+#pod 'UMengUShare/Social/ReducedSina'
 end

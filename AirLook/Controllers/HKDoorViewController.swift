@@ -31,7 +31,7 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         view.backgroundColor = UIColor.black
-       sceneView = ARSCNView(frame: view.bounds)
+        sceneView = ARSCNView(frame: view.bounds)
         view.addSubview(sceneView)
         self.setSceneView()
         self.addGestureRecognizer()
@@ -45,7 +45,7 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     }
     func setSceneView() {
         sceneView.delegate = self
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         let scene = SCNScene()
         sceneView.scene = scene
         sceneView.antialiasingMode = SCNAntialiasingMode.multisampling4X
@@ -179,24 +179,27 @@ extension HKDoorViewController{
             return
         }
         // 点击到的节点
-        let node = firstNode.node
+        let tapNode = firstNode.node
+        
+        if tapNode == self.mainNode{
+            return;
+        }
         //点到转发微博
         if self.selectNode != nil{
-            if self.selectNode!.retweeted_Node == firstNode.node{
+            if self.selectNode!.retweeted_Node == tapNode{
                 self.toSmall(node:selectNode)
                 return
             }
-            if self.selectNode!.childNodes.contains(firstNode.node){
+            if self.selectNode!.childNodes.contains(tapNode){
                 self.toSmall(node:selectNode)
                 return
             }
         }
-        
-        if firstNode.node == self.selectNode{
+        if tapNode == self.selectNode{
             self.toSmall(node:self.selectNode)
         }else{
             self.toSmall(node:selectNode)
-            self.toBig(node: (node as? HKWeiBoNode)!)
+            self.toBig(node: (tapNode as? HKWeiBoNode)!)
         }
     }
     func toBig(node:HKWeiBoNode) {

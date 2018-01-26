@@ -6,3 +6,9 @@
 #import "WeiboSDK.h"
 #import "ITTPromptView.h"
 
+#import <UMSocialCore/UMSocialCore.h>
+#import <UShareUI/UShareUI.h>
+#import <UMSocialCore/UMSocialManager.h>
+
+
+

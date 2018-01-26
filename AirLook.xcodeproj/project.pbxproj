@@ -13,6 +13,7 @@
 		1230F85D200C6D280094905A /* HKLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230F85C200C6D280094905A /* HKLoadingButton.swift */; };
 		1230F865200C845F0094905A /* HKTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230F863200C845F0094905A /* HKTipView.swift */; };
 		1230F867200C85A00094905A /* HKTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1230F866200C85A00094905A /* HKTipView.xib */; };
+		1232251D20198DF3008ADB06 /* HKMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232251C20198DF3008ADB06 /* HKMeViewController.swift */; };
 		1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1239AABD2005F12800ED20D5 /* UIImage+Category.swift */; };
 		1259E2982008B17C00528519 /* HKDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259E2972008B17C00528519 /* HKDownloader.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
@@ -48,6 +49,14 @@
 		12C6E36F2006078E005F2BCD /* ITTPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6E3682006078D005F2BCD /* ITTPromptView.m */; };
 		12C6E3702006078E005F2BCD /* ITTPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12C6E3692006078D005F2BCD /* ITTPromptView.xib */; };
 		12C6E3712006078E005F2BCD /* PoppingBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6E36A2006078D005F2BCD /* PoppingBaseView.m */; };
+		12D38AD22019B9E4000FFB2E /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12D38AC32019B9E4000FFB2E /* UMSocialSDKResources.bundle */; };
+		12D38AD32019B9E4000FFB2E /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D38AC42019B9E4000FFB2E /* UShareUI.framework */; };
+		12D38AD42019B9E4000FFB2E /* UMSocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D38AC62019B9E4000FFB2E /* UMSocialNetwork.framework */; };
+		12D38AD52019B9E4000FFB2E /* UMSocialSDKPromptResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12D38AC72019B9E4000FFB2E /* UMSocialSDKPromptResources.bundle */; };
+		12D38AD62019B9E4000FFB2E /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D38AC82019B9E4000FFB2E /* UMSocialCore.framework */; };
+		12D38AD72019B9E4000FFB2E /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D38ACB2019B9E4000FFB2E /* libSocialWeChat.a */; };
+		12D38AD82019B9E4000FFB2E /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D38ACE2019B9E4000FFB2E /* libSocialSina.a */; };
+		12D38AD92019B9E4000FFB2E /* libUMSocialLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D38AD12019B9E4000FFB2E /* libUMSocialLog.a */; };
 		12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */; };
 		12FF35D71FFB342000CAB502 /* HKMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FF35D61FFB342000CAB502 /* HKMacro.swift */; };
 		12FF35DD1FFB739B00CAB502 /* HKPainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FF35DC1FFB739B00CAB502 /* HKPainter.swift */; };
@@ -61,6 +70,7 @@
 		1230F85C200C6D280094905A /* HKLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKLoadingButton.swift; sourceTree = "<group>"; };
 		1230F863200C845F0094905A /* HKTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKTipView.swift; sourceTree = "<group>"; };
 		1230F866200C85A00094905A /* HKTipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HKTipView.xib; sourceTree = "<group>"; };
+		1232251C20198DF3008ADB06 /* HKMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKMeViewController.swift; sourceTree = "<group>"; };
 		1239AABD2005F12800ED20D5 /* UIImage+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Category.swift"; sourceTree = "<group>"; };
 		1259E2972008B17C00528519 /* HKDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKDownloader.swift; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +120,16 @@
 		12C6E3692006078D005F2BCD /* ITTPromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITTPromptView.xib; sourceTree = "<group>"; };
 		12C6E36A2006078D005F2BCD /* PoppingBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoppingBaseView.m; sourceTree = "<group>"; };
 		12C6E36B2006078D005F2BCD /* PoppingBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoppingBaseView.h; sourceTree = "<group>"; };
+		12D38AC32019B9E4000FFB2E /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
+		12D38AC42019B9E4000FFB2E /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
+		12D38AC62019B9E4000FFB2E /* UMSocialNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialNetwork.framework; sourceTree = "<group>"; };
+		12D38AC72019B9E4000FFB2E /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
+		12D38AC82019B9E4000FFB2E /* UMSocialCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialCore.framework; sourceTree = "<group>"; };
+		12D38ACB2019B9E4000FFB2E /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
+		12D38ACC2019B9E4000FFB2E /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		12D38ACE2019B9E4000FFB2E /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
+		12D38ACF2019B9E4000FFB2E /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaHandler.h; sourceTree = "<group>"; };
+		12D38AD12019B9E4000FFB2E /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
 		12FEE7AB1FF4DCDD0005D58B /* HKWeiBoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWeiBoModel.swift; sourceTree = "<group>"; };
 		12FF35D61FFB342000CAB502 /* HKMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKMacro.swift; sourceTree = "<group>"; };
 		12FF35DC1FFB739B00CAB502 /* HKPainter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKPainter.swift; sourceTree = "<group>"; };
@@ -123,20 +143,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128ADD931FF38F5A0093F5C9 /* CoreGraphics.framework in Frameworks */,
+				128ADD971FF38F750093F5C9 /* libsqlite3.tbd in Frameworks */,
 				128ADDA81FF396360093F5C9 /* QuartzCore.framework in Frameworks */,
 				128ADDA61FF395F60093F5C9 /* Photos.framework in Frameworks */,
-				128ADD931FF38F5A0093F5C9 /* CoreGraphics.framework in Frameworks */,
 				128ADD911FF38F4C0093F5C9 /* Foundation.framework in Frameworks */,
 				128ADD8E1FF38F340093F5C9 /* UIKit.framework in Frameworks */,
 				128ADD8C1FF38F260093F5C9 /* CoreText.framework in Frameworks */,
+				12D38AD82019B9E4000FFB2E /* libSocialSina.a in Frameworks */,
 				128ADD8A1FF38F130093F5C9 /* CoreTelephony.framework in Frameworks */,
+				12D38AD92019B9E4000FFB2E /* libUMSocialLog.a in Frameworks */,
 				128ADD881FF38F060093F5C9 /* Security.framework in Frameworks */,
+				12D38AD62019B9E4000FFB2E /* UMSocialCore.framework in Frameworks */,
 				128ADDAD1FF397630093F5C9 /* libWeiboSDK.a in Frameworks */,
 				128ADD871FF38EFE0093F5C9 /* SystemConfiguration.framework in Frameworks */,
 				128ADD841FF38EE50093F5C9 /* ImageIO.framework in Frameworks */,
-				128ADD971FF38F750093F5C9 /* libsqlite3.tbd in Frameworks */,
+				12D38AD42019B9E4000FFB2E /* UMSocialNetwork.framework in Frameworks */,
 				128ADD951FF38F680093F5C9 /* libz.tbd in Frameworks */,
 				B112E040C29506445B461FDB /* Pods_AirLook.framework in Frameworks */,
+				12D38AD72019B9E4000FFB2E /* libSocialWeChat.a in Frameworks */,
+				12D38AD32019B9E4000FFB2E /* UShareUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,8 +200,11 @@
 		1259E29A200AF13400528519 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				12FF35D61FFB342000CAB502 /* HKMacro.swift */,
 				122870D91FFF1AF600F9DA46 /* HKTools.swift */,
 				12FF35DC1FFB739B00CAB502 /* HKPainter.swift */,
+				1239AABD2005F12800ED20D5 /* UIImage+Category.swift */,
+				122870D71FFF151D00F9DA46 /* Date+Category.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -220,6 +249,7 @@
 			children = (
 				126395BB200DD6FC0028E69D /* HKDoorViewController.swift */,
 				125ED8C01FF32F4F0019043E /* ViewController.swift */,
+				1232251C20198DF3008ADB06 /* HKMeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -274,6 +304,7 @@
 		12C6E35F20060777005F2BCD /* 3DParty */ = {
 			isa = PBXGroup;
 			children = (
+				12D38AC12019B9E4000FFB2E /* UMSocial */,
 				126395BD200DE50B0028E69D /* PermissionScope */,
 				12C6E372200607A2005F2BCD /* ITTPromptView */,
 			);
@@ -308,6 +339,71 @@
 			path = ITTPromptView;
 			sourceTree = "<group>";
 		};
+		12D38AC12019B9E4000FFB2E /* UMSocial */ = {
+			isa = PBXGroup;
+			children = (
+				12D38AC22019B9E4000FFB2E /* UMSocialUI */,
+				12D38AC52019B9E4000FFB2E /* UMSocialSDK */,
+				12D38AC92019B9E4000FFB2E /* SocialLibraries */,
+				12D38AD02019B9E4000FFB2E /* UMSocialSDKPlugin */,
+			);
+			path = UMSocial;
+			sourceTree = "<group>";
+		};
+		12D38AC22019B9E4000FFB2E /* UMSocialUI */ = {
+			isa = PBXGroup;
+			children = (
+				12D38AC32019B9E4000FFB2E /* UMSocialSDKResources.bundle */,
+				12D38AC42019B9E4000FFB2E /* UShareUI.framework */,
+			);
+			path = UMSocialUI;
+			sourceTree = "<group>";
+		};
+		12D38AC52019B9E4000FFB2E /* UMSocialSDK */ = {
+			isa = PBXGroup;
+			children = (
+				12D38AC62019B9E4000FFB2E /* UMSocialNetwork.framework */,
+				12D38AC72019B9E4000FFB2E /* UMSocialSDKPromptResources.bundle */,
+				12D38AC82019B9E4000FFB2E /* UMSocialCore.framework */,
+			);
+			path = UMSocialSDK;
+			sourceTree = "<group>";
+		};
+		12D38AC92019B9E4000FFB2E /* SocialLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				12D38ACA2019B9E4000FFB2E /* WeChat */,
+				12D38ACD2019B9E4000FFB2E /* Sina */,
+			);
+			path = SocialLibraries;
+			sourceTree = "<group>";
+		};
+		12D38ACA2019B9E4000FFB2E /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				12D38ACB2019B9E4000FFB2E /* libSocialWeChat.a */,
+				12D38ACC2019B9E4000FFB2E /* UMSocialWechatHandler.h */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		12D38ACD2019B9E4000FFB2E /* Sina */ = {
+			isa = PBXGroup;
+			children = (
+				12D38ACE2019B9E4000FFB2E /* libSocialSina.a */,
+				12D38ACF2019B9E4000FFB2E /* UMSocialSinaHandler.h */,
+			);
+			path = Sina;
+			sourceTree = "<group>";
+		};
+		12D38AD02019B9E4000FFB2E /* UMSocialSDKPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				12D38AD12019B9E4000FFB2E /* libUMSocialLog.a */,
+			);
+			path = UMSocialSDKPlugin;
+			sourceTree = "<group>";
+		};
 		12FEE7A91FF4CD780005D58B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,10 +424,7 @@
 		12FF35DE1FFB7C2E00CAB502 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				12FF35D61FFB342000CAB502 /* HKMacro.swift */,
 				125ED8BC1FF32F4F0019043E /* AppDelegate.swift */,
-				1239AABD2005F12800ED20D5 /* UIImage+Category.swift */,
-				122870D71FFF151D00F9DA46 /* Date+Category.swift */,
 				128ADD7E1FF3895C0093F5C9 /* AirLook-Bridging-Header.h */,
 			);
 			path = Other;
@@ -407,9 +500,11 @@
 				12C6E3702006078E005F2BCD /* ITTPromptView.xib in Resources */,
 				128ADDAE1FF397630093F5C9 /* WeiboSDK.bundle in Resources */,
 				1230F867200C85A00094905A /* HKTipView.xib in Resources */,
+				12D38AD52019B9E4000FFB2E /* UMSocialSDKPromptResources.bundle in Resources */,
 				126395C8200DE50B0028E69D /* Localizable.strings in Resources */,
 				125ED8C61FF32F4F0019043E /* Assets.xcassets in Resources */,
 				125ED8C41FF32F4F0019043E /* Main.storyboard in Resources */,
+				12D38AD22019B9E4000FFB2E /* UMSocialSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,9 +517,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AirLook/Pods-AirLook-resources.sh",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -485,6 +584,7 @@
 				12FF35DD1FFB739B00CAB502 /* HKPainter.swift in Sources */,
 				1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */,
 				12C6E36D2006078E005F2BCD /* LoadIngHUD.m in Sources */,
+				1232251D20198DF3008ADB06 /* HKMeViewController.swift in Sources */,
 				12FEE7AC1FF4DCDD0005D58B /* HKWeiBoModel.swift in Sources */,
 				122870DA1FFF1AF700F9DA46 /* HKTools.swift in Sources */,
 				126395C9200DE50B0028E69D /* Permissions.swift in Sources */,
@@ -650,14 +750,22 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8TJ9GDFV36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/UMSocialSDK",
+				);
 				INFOPLIST_FILE = AirLook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirLook/weibo",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/UMSocialSDKPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.XiaQi.AirLook;
+				PRODUCT_BUNDLE_IDENTIFIER = WeBookReality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AirLook/Other/AirLook-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -674,14 +782,22 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8TJ9GDFV36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/UMSocialSDK",
+				);
 				INFOPLIST_FILE = AirLook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirLook/weibo",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/AirLook/3DParty/UMSocial/UMSocialSDKPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.XiaQi.AirLook;
+				PRODUCT_BUNDLE_IDENTIFIER = WeBookReality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AirLook/Other/AirLook-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
