@@ -34,10 +34,14 @@ class ViewController: UIViewController {
         UMSocialUIManager.showShareMenuViewInWindow(platformSelectionBlock: { (type, dic) in
             let messgaeObject = UMSocialMessageObject()
 
-            let shareObject = UMShareWebpageObject.shareObject(withTitle: "Air Look", descr: "试试用AR刷微博", thumImage: UIImage(named: "hudie_4"))
+            let shareObject = UMShareWebpageObject.shareObject(withTitle: "Air Look", descr: "刷微博?何不换一种方式", thumImage: UIImage(named: "hudie_4"))
             shareObject?.webpageUrl = "https://itunes.apple.com/cn/app/weare/id1325931978?mt=8"
             messgaeObject.shareObject = shareObject
             UMSocialManager.default().share(to: type, messageObject: messgaeObject, currentViewController: self, completion: { (data, error) in
+                print(data ?? "")
+                print(error ?? "")
+
+                
             })
         })
     }

@@ -19,12 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WeiboSDKDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         WeiboSDK.registerApp("3161059495")
         //友盟
-        UMSocialManager.default().openLog(false)
+        UMSocialManager.default().openLog(true)
         UMSocialManager.default().umSocialAppkey = "5a698737f29d9875aa000113"
         
-        UMSocialManager.default().platformProvider(with: UMSocialPlatformType.wechatSession).umSocial_setAppKey!("wx74fc8e42e38ce235", withAppSecret: "8a42834873fc2929580cf328a856da41", withRedirectURL: "")
-        UMSocialManager.default().platformProvider(with: UMSocialPlatformType.wechatTimeLine).umSocial_setAppKey!("wx74fc8e42e38ce235", withAppSecret: "8a42834873fc2929580cf328a856da41", withRedirectURL: "")
+        UMSocialManager.default().platformProvider(with: UMSocialPlatformType.wechatSession).umSocial_setAppKey!("wx1285684d625ae787", withAppSecret: "3c79fc90e6bfea3a8a40df5db2f82792", withRedirectURL: "")
+       
+        UMSocialManager.default().platformProvider(with: UMSocialPlatformType.wechatTimeLine).umSocial_setAppKey!("wx1285684d625ae787", withAppSecret: "3c79fc90e6bfea3a8a40df5db2f82792", withRedirectURL: "")
+        
         UMSocialManager.default().platformProvider(with: UMSocialPlatformType.sina).umSocial_setAppKey!("3161059495", withAppSecret: "b4078721c9f15fc630b9b0961bd3ecff", withRedirectURL: "https://github.com/SherlockQi")
+        UMSocialManager.default().removePlatformProvider(with: UMSocialPlatformType.wechatFavorite)
+
+        UMSocialManager.default().platformProvider(with: UMSocialPlatformType.QQ).umSocial_setAppKey!("1106121093", withAppSecret: "61HxCxG5ZbMYKrAv", withRedirectURL: "")
+        UMSocialManager.default().removePlatformProvider(with: UMSocialPlatformType.qzone)
+                  
         return true
     }
     
