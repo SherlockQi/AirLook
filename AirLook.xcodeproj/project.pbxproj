@@ -17,7 +17,6 @@
 		1239AABE2005F12800ED20D5 /* UIImage+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1239AABD2005F12800ED20D5 /* UIImage+Category.swift */; };
 		1259E2982008B17C00528519 /* HKDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1259E2972008B17C00528519 /* HKDownloader.swift */; };
 		125ED8BD1FF32F4F0019043E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8BC1FF32F4F0019043E /* AppDelegate.swift */; };
-		125ED8BF1FF32F4F0019043E /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8BE1FF32F4F0019043E /* art.scnassets */; };
 		125ED8C11FF32F4F0019043E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125ED8C01FF32F4F0019043E /* ViewController.swift */; };
 		125ED8C41FF32F4F0019043E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8C21FF32F4F0019043E /* Main.storyboard */; };
 		125ED8C61FF32F4F0019043E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 125ED8C51FF32F4F0019043E /* Assets.xcassets */; };
@@ -77,7 +76,6 @@
 		1259E2972008B17C00528519 /* HKDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKDownloader.swift; sourceTree = "<group>"; };
 		125ED8B91FF32F4F0019043E /* AirLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		125ED8BC1FF32F4F0019043E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		125ED8BE1FF32F4F0019043E /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		125ED8C01FF32F4F0019043E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		125ED8C31FF32F4F0019043E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		125ED8C51FF32F4F0019043E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				125ED8C21FF32F4F0019043E /* Main.storyboard */,
 				125ED8C71FF32F4F0019043E /* LaunchScreen.storyboard */,
 				125ED8C51FF32F4F0019043E /* Assets.xcassets */,
-				125ED8BE1FF32F4F0019043E /* art.scnassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -523,7 +520,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				125ED8BF1FF32F4F0019043E /* art.scnassets in Resources */,
 				125ED8C91FF32F4F0019043E /* LaunchScreen.storyboard in Resources */,
 				12C6E3702006078E005F2BCD /* ITTPromptView.xib in Resources */,
 				128ADDAE1FF397630093F5C9 /* WeiboSDK.bundle in Resources */,
@@ -800,7 +796,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AirLook/Other/AirLook-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -833,7 +829,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AirLook/Other/AirLook-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

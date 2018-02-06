@@ -31,7 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WeiboSDKDelegate {
 
         UMSocialManager.default().platformProvider(with: UMSocialPlatformType.QQ).umSocial_setAppKey!("1106121093", withAppSecret: "61HxCxG5ZbMYKrAv", withRedirectURL: "")
         UMSocialManager.default().removePlatformProvider(with: UMSocialPlatformType.qzone)
-                  
+
+
+        Thread.sleep(forTimeInterval: 0.5)
         return true
     }
     
@@ -45,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WeiboSDKDelegate {
                 print("userID:\(String(describing: userID))\naccessToken:\(String(describing: accessToken))")
                 let userInfo = response.userInfo as Dictionary
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SINA_CODE"), object: nil, userInfo:userInfo )
+            }else{
+                ITTPromptView.showMessage("微博授权失败", andFrameY: 0)
             }
         }
     }

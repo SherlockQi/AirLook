@@ -19,13 +19,4 @@ class HKMeViewController: UIViewController {
         jianshuIconImageView.layer.cornerRadius = jianshuIconImageView.bounds.size.width * 0.5
         jianshuIconImageView.layer.masksToBounds = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-
-
 }

@@ -107,6 +107,7 @@
                     <connections>
                         <outlet property="inButton" destination="jdl-sa-OA1" id="fjS-z2-qIQ"/>
                         <outlet property="nickLabel" destination="KpL-nf-dTR" id="I4f-J5-8rf"/>
+                        <outlet property="tipLabel" destination="veC-5C-hRQ" id="muZ-L4-gHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -153,8 +154,8 @@
                                     <action selector="backButtonDidClick:" destination="6aF-ni-h76" eventType="touchUpInside" id="pcl-Y0-f7c"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="408509637" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olv-vR-M3Y">
-                                <rect key="frame" x="56" y="163" width="121" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="爱兔子的跳绳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olv-vR-M3Y">
+                                <rect key="frame" x="56" y="163" width="134" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.29019607843137252" green="0.59999999999999998" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -172,7 +173,7 @@
                                     <constraint firstAttribute="height" constant="32" id="sku-ku-aZn"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_QQ" translatesAutoresizingMaskIntoConstraints="NO" id="1cq-qL-BUc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_weibo" translatesAutoresizingMaskIntoConstraints="NO" id="1cq-qL-BUc">
                                 <rect key="frame" x="16" y="160" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="EWa-6r-gIt"/>
@@ -193,7 +194,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heikki_" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DV4-bw-Qou">
                                 <rect key="frame" x="56" y="115" width="68.5" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.29058149456977844" green="0.60003644227981567" blue="0.82045871019363403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.18798828125" green="0.53705512152777779" blue="0.82045871019363403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -231,10 +232,10 @@
         <image name="back_bear" width="327" height="493"/>
         <image name="backdown" width="64" height="64"/>
         <image name="hudie_4" width="81" height="81"/>
-        <image name="icon_QQ" width="64" height="64"/>
         <image name="icon_come" width="64" height="64"/>
         <image name="icon_github" width="64" height="64"/>
         <image name="icon_share" width="64" height="64"/>
         <image name="icon_star" width="64" height="64"/>
+        <image name="icon_weibo" width="64" height="64"/>
     </resources>
 </document>

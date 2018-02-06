@@ -21,15 +21,20 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     let mainNode = SCNNode()
     var weiboNodes:[SCNNode]?
     var loadButton :HKLoadingButton?
+    var backButton :UIButton?
+    var resetButton :UIButton?
     let tipView = HKTipView.tipView()
+    var guideView:UIView?
     
     var page:NSInteger = 1
     
     var timeLineSource:[HKWeiBoModel] = NSMutableArray(capacity: 25) as! [HKWeiBoModel]
-
+    /**
+     
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
+        
         view.backgroundColor = UIColor.black
         sceneView = ARSCNView(frame: view.bounds)
         view.addSubview(sceneView)
@@ -37,12 +42,14 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         self.addGestureRecognizer()
         self.addLoadButton()
         self.addResetButton()
+        self.addBackButton()
         self.weiboNodes = []
-        if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
-            loadWeiBo(token:token as! String)
-        }
+        loadWeiBo()
         tipView.frame = CGRect(x: 10, y: 100, width:self.view.bounds.size.width - 20, height: 200)
+        showGuideView()
     }
+    
+    
     func setSceneView() {
         sceneView.delegate = self
         sceneView.showsStatistics = false
@@ -55,23 +62,36 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         loadButton = nextButton
         nextButton.backgroundColor = UIColor(red: 60/255.0, green: 180/255.0, blue: 244/255.0, alpha: 0.5)
         nextButton.setImage(UIImage(named: "loadMore"), for: .normal)
+        nextButton.setImage(UIImage(named: "loadMore"), for: .disabled)
         nextButton.layer.cornerRadius = nextButton.bounds.size.width * 0.5
         nextButton.layer.masksToBounds = true
         nextButton.addTarget(self, action: #selector(loadMoreButtonDidClick(sender:)), for: .touchUpInside)
         view.addSubview(nextButton)
     }
     func addResetButton(){
-        let resetButton = UIButton(frame: CGRect(x: view.bounds.size.width - 35, y: 20, width: 20, height: 20))
-        resetButton.setImage(#imageLiteral(resourceName: "reset"), for: .normal)
-        resetButton.addTarget(self, action: #selector(loadResetButtonDidClick(sender:)), for: .touchUpInside)
-        view.addSubview(resetButton)
+        resetButton = UIButton(frame: CGRect(x: view.bounds.size.width - 35, y: 20, width: 20, height: 20))
+        resetButton?.setImage(#imageLiteral(resourceName: "reset"), for: .normal)
+        resetButton?.setImage(#imageLiteral(resourceName: "reset"), for: .disabled)
+        resetButton?.addTarget(self, action: #selector(loadResetButtonDidClick(sender:)), for: .touchUpInside)
+        view.addSubview(resetButton!)
     }
+    func addBackButton(){
+        backButton = UIButton(frame: CGRect(x: 8, y: 16, width: 25, height: 25))
+        backButton?.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+        backButton?.setImage(#imageLiteral(resourceName: "back"), for: .disabled)
+        backButton?.addTarget(self, action: #selector(backButtonDidClick(sender:)), for: .touchUpInside)
+        view.addSubview(backButton!)
+    }
+    
     func addGestureRecognizer(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle(gesture:)))
         sceneView.addGestureRecognizer(tap)
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panHandle(gesture:)))
         sceneView.addGestureRecognizer(pan)
     }
+    
+    
+    
     
     @objc func loadResetButtonDidClick(sender:UIButton){
         print("loadResetButtonDidClick")
@@ -83,13 +103,14 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
         self.addWeiBoSence()
         self.addGestureRecognizer()
     }
+    @objc func backButtonDidClick(sender:UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
     @objc func loadMoreButtonDidClick(sender:UIButton){
         sender.isSelected = !sender.isSelected
         sender.setNeedsDisplay()
         if sender.isSelected {
-            if let token = UserDefaults.standard.object(forKey: KEY_ACCESS_TOKEN){
-                loadWeiBo(token: token as! String)
-            }
+            loadWeiBo()
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -101,10 +122,14 @@ class HKDoorViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+        sceneView.removeFromSuperview()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    deinit {
+        print("deinit")
     }
 }
 //MARK:节点组装
@@ -137,36 +162,54 @@ extension HKDoorViewController{
 }
 
 //MARK:登陆&获取信息
+
 extension HKDoorViewController{
-    func loadWeiBo(token:String){
-        let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
-        let parameters:[String : Any] =  ["access_token":token,"count":25,"page":page]
-        self.tipView.removeFromSuperview()
-        Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
-            if response.description.contains("\"error_code\" = 10023;") || response.description.contains("User requests out of rate limit") {
-                self.view.addSubview(self.tipView)
-                self.loadButton?.isSelected = false
-            }
-            switch response.result {
-            case .success(let value):
-                print(value)
-                self.timeLineSource.removeAll()
-                if let timeJsonArr:[JSON] = JSON(value)["statuses"].array{
-                    for index in 0..<timeJsonArr.count {
-                        if let dic = timeJsonArr[index].dictionary{
-                            let model:HKWeiBoModel = HKWeiBoModel.modelWithDic(dic:dic)
-                            self.timeLineSource.append(model)
-                        }
-                    }
-                    DispatchQueue.main.async {
-                        self.addWeiBoSence()
-                        self.loadButton?.isSelected = false
-                    }
-                    self.page =  self.page + 1
+    
+    
+    
+    /**
+     *
+     if token{
+     下载微博
+     }else{
+     使用 goodData
+     }
+     *
+     */
+    func loadWeiBo(){
+        self.loadButton?.isHidden = false
+        if let token = UserDefaults.standard.value(forKey: KEY_ACCESS_TOKEN) {
+            let timeLine = "https://api.weibo.com/2/statuses/home_timeline.json"
+            let parameters:[String : Any] =  ["access_token":token,"count":25,"page":page]
+            self.tipView.removeFromSuperview()
+            Alamofire.request(timeLine, method: .get, parameters: parameters).responseJSON { (response) in
+                if response.description.contains("\"error_code\" = 10023;") || response.description.contains("User requests out of rate limit") {
+                    self.view.addSubview(self.tipView)
+                    self.loadButton?.isSelected = false
                 }
-            case .failure(let error):
-                print(error)
+                switch response.result {
+                case .success(let value):
+                    self.timeLineSource.removeAll()
+                    if let timeJsonArr:[JSON] = JSON(value)["statuses"].array{
+                        for index in 0..<timeJsonArr.count {
+                            if let dic = timeJsonArr[index].dictionary{
+                                let model:HKWeiBoModel = HKWeiBoModel.modelWithDic(dic:dic)
+                                self.timeLineSource.append(model)
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.addWeiBoSence()
+                            self.loadButton?.isSelected = false
+                        }
+                        self.page =  self.page + 1
+                    }
+                case .failure(_): break
+                }
             }
+        }else{
+            self.timeLineSource = HKTools.goodData()
+            self.addWeiBoSence()
+            //            self.loadButton?.isHidden = true
         }
     }
 }
@@ -180,7 +223,6 @@ extension HKDoorViewController{
         }
         // 点击到的节点
         let tapNode = firstNode.node
-        
         if tapNode == self.mainNode{
             return;
         }
@@ -227,3 +269,86 @@ extension HKDoorViewController{
         gesture.setTranslation(CGPoint.zero, in: self.view)
     }
 }
+extension HKDoorViewController{
+    
+    func showGuideView(){
+    
+        if !HKTools.show() {
+            return
+        }
+        
+        if  UserDefaults.standard.bool(forKey: KEY_ACCESS_NO_FIRST){
+            return
+        }
+        
+        
+        loadButton?.isEnabled = false
+        resetButton?.isEnabled = false
+        backButton?.isEnabled = false
+        
+        guideView = UIView(frame:view.bounds)
+        guideView?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+        view.insertSubview(guideView!, belowSubview: loadButton!)
+        
+        let r_arrow_iv = UIImageView(image: #imageLiteral(resourceName: "arrow_right"))
+        let l_arrow_iv = UIImageView(image: #imageLiteral(resourceName: "arrow_left"))
+        let b_arrow_iv = UIImageView(image: #imageLiteral(resourceName: "arrow_bottom"))
+        l_arrow_iv.frame = CGRect(x: 30, y: 30, width: 50, height: 50)
+        r_arrow_iv.frame = CGRect(x: view.bounds.size.width - 75, y: 45, width: 50, height: 50)
+        b_arrow_iv.frame = CGRect(x: view.bounds.size.width - 70, y: view.bounds.size.height - 115, width: 50, height: 50)
+        guideView?.addSubview(r_arrow_iv)
+        guideView?.addSubview(l_arrow_iv)
+        guideView?.addSubview(b_arrow_iv)
+        
+        let t_color = UIColor.white
+        let t_font = UIFont.systemFont(ofSize: 12)
+        
+        let l_label = UILabel(frame: CGRect(x: 30, y: 80, width: 50, height: 20))
+        l_label.textColor = t_color
+        l_label.font = t_font
+        l_label.text = "返回主页"
+        
+        let r_label = UILabel(frame: CGRect(x: view.bounds.size.width - 80, y: 100, width: 80, height: 20))
+        r_label.textColor = t_color
+        r_label.font = t_font
+        r_label.text = "重置位置"
+        
+        let b_label = UILabel(frame: CGRect(x: view.bounds.size.width - 100, y: view.bounds.size.height - 140, width: 100, height: 20))
+        b_label.textColor = t_color
+        b_label.font = t_font
+        b_label.text = "加载更多内容"
+        
+        let b_color = UIColor(red: 48/256.0, green: 150/256.0, blue: 209/256.0, alpha: 0.5)
+        
+        let knowButton = UIButton(frame: CGRect(x:0, y:0, width: 200, height: 60))
+        knowButton.center = guideView!.center
+        knowButton.backgroundColor = UIColor.white
+        knowButton.setTitle("知道啦", for: .normal)
+        knowButton.setTitleColor(b_color, for: .normal)
+        knowButton.layer.cornerRadius = 5
+        knowButton.layer.masksToBounds = true
+        knowButton.layer.borderWidth = 4
+        knowButton.layer.borderColor = b_color.cgColor
+        
+        knowButton.addTarget(self, action: #selector(knowButtonDidClick), for: .touchUpInside)
+        guideView?.addSubview(l_label)
+        guideView?.addSubview(r_label)
+        guideView?.addSubview(b_label)
+        guideView?.addSubview(knowButton)
+    }
+    @objc func knowButtonDidClick() {
+        
+
+         UserDefaults.standard.set(true, forKey: KEY_ACCESS_NO_FIRST)
+        
+        UserDefaults.standard.synchronize()
+        
+        loadButton?.isEnabled = true
+        resetButton?.isEnabled = true
+        backButton?.isEnabled = true
+        guideView!.removeFromSuperview()
+        guideView = nil
+    }
+}
+
+

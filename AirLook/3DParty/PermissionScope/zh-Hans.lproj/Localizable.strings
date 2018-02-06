@@ -10,7 +10,7 @@
 "Enable Location" = "Enable Location";
 "Allow Notifications" = "Allow Notifications";
 "Allow Microphone" = "Allow Microphone";
-"Allow Camera" = "去设置";
+"Allow Camera" = "设置";
 "Allow Photos" = "Allow Photos";
 "Allow Reminders" = "Allow Reminders";
 "Allow Bluetooth" = "Allow Bluetooth";
@@ -83,7 +83,7 @@
 "Please enable access to LocationInUse in the Settings app" = "";
 "Please enable access to Notifications in the Settings app" = "";
 "Please enable access to Microphone in the Settings app" = "";
-"Please enable access to Camera in the Settings app" = "去设置";
+"Please enable access to Camera in the Settings app" = "设置";
 "Please enable access to Photos in the Settings app" = "";
 "Please enable access to Reminders in the Settings app" = "";
 "Please enable access to Bluetooth in the Settings app" = "";

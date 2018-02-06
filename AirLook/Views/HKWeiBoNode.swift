@@ -58,13 +58,17 @@ class HKWeiBoNode: SCNNode {
     
     var contentImage:UIImage?{
         didSet{
-            setUpMaterialImage(image: contentImage!, node: self,color: UIColor.white)
+            if contentImage != nil{
+                setUpMaterialImage(image: contentImage!, node: self,color: UIColor.white)
+            }
         }
     }
     //原创微博
     var originalImage:UIImage?{
         didSet{
-            setUpMaterialImage(image: originalImage!, node: self,color: UIColor.white)
+            if originalImage != nil {
+                setUpMaterialImage(image: originalImage!, node: self,color: UIColor.white)
+            }
         }
     }
     //转发微博

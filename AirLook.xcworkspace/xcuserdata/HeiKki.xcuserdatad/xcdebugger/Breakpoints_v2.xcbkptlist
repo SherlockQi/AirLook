@@ -9,46 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AirLook/Controllers/ViewController.swift"
-            timestampString = "539076166.457036"
+            filePath = "AirLook/Controllers/HKDoorViewController.swift"
+            timestampString = "539504677.423987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "shareButtonDidClick(_:)"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "showGuideView()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[2] = Owned To Guaranteed&gt; of closure #1 (__C.UMSocialPlatformType, Swift.Optional&lt;Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;&gt;) -&gt; () in AirLook.ViewController.shareButtonDidClick(__ObjC.UIButton) -&gt; ()"
-                  moduleName = "AirLook"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Controllers/ViewController.swift"
-                  timestampString = "539075602.238305"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "672">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[1] = Owned To Guaranteed&gt; of closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.UMSocialPlatformType, Swift.Optional&lt;Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;&gt;) -&gt; () in AirLook.ViewController.shareButtonDidClick(__ObjC.UIButton) -&gt; ()"
-                  moduleName = "AirLook"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hosa/Desktop/AirLook/AirLook/Controllers/ViewController.swift"
-                  timestampString = "539075602.242841"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "564">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AirLook/Controllers/ViewController.swift"
-            timestampString = "539076166.4571739"
+            filePath = "AirLook/Controllers/HKDoorViewController.swift"
+            timestampString = "539504677.424053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "shareButtonDidClick(_:)"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "showGuideView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
